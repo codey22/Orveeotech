@@ -1,0 +1,24 @@
+import Link from 'next/link';
+import styles from './ProjectCard.module.css';
+
+export default function ProjectCard({ project }) {
+  return (
+    <div className={styles.card}>
+      <div className={styles.imagePlaceholder}>
+        <div className={styles.placeholderText}>{project.title.substring(0, 2)}</div>
+      </div>
+      <div className={styles.content}>
+        <h3 className={styles.title}>{project.title}</h3>
+        <p className={styles.description}>{project.description}</p>
+        <a 
+          href={project.link} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={styles.linkBtn}
+        >
+          View Live Project
+        </a>
+      </div>
+    </div>
+  );
+}

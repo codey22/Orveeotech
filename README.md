@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ORVEEOTECH Website
+
+A modern, high-performance brand website with a 1990s graphic design inspired retro feel. Built with Next.js (App Router), JavaScript, and CSS Modules.
+
+## Features
+
+- **Retro Aesthetic**: Custom CSS variables for a 90s Memphis/Pop design style.
+- **Animations**: GSAP for hero sequences, Framer Motion for UI interactions, and minimal Three.js for background effects.
+- **Backend**: Next.js API Routes integrated with MongoDB for contact form submissions.
+- **Performance**: Server Components by default, optimized fonts (Outfit).
+
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Language**: JavaScript
+- **Styling**: CSS Modules, Global CSS Variables
+- **Animations**: GSAP, Framer Motion, Three.js (@react-three/fiber)
+- **Database**: MongoDB (via Mongoose)
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd orveeotech_website
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Configure Environment Variables:**
+   - Copy `.env.local.example` to `.env.local`
+   - Add your MongoDB connection string:
+     ```
+     MONGODB_URI=your_mongodb_connection_string
+     ```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+5. **Open http://localhost:3000** to view the site.
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+### Vercel (Recommended)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to a Git repository (GitHub, GitLab, Bitbucket).
+2. Import the project into Vercel.
+3. Add the `MONGODB_URI` environment variable in the Vercel dashboard.
+4. Deploy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Render
 
-## Deploy on Vercel
+1. Create a new Web Service on Render.
+2. Connect your repository.
+3. Set the build command to `npm run build`.
+4. Set the start command to `npm start`.
+5. Add the `MONGODB_URI` environment variable.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/`: App Router pages and API routes.
+  - `page.js`: Home page.
+  - `about/`: About page.
+  - `services/`: Services & Works page.
+  - `contact/`: Contact page.
+  - `api/contact/`: Contact form API endpoint.
+  - `globals.css`: Global styles and design tokens.
+- `components/`: Reusable UI components (Navbar, Footer, Hero, etc.).
+- `lib/`: Utility functions (MongoDB connection).
+- `models/`: Mongoose models (Contact schema).

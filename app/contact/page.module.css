@@ -1,0 +1,205 @@
+.contactContainer {
+  padding: 6rem 2rem;
+  min-height: 100vh;
+  background-image: radial-gradient(#aaa 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 4rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 3.5rem;
+  background: white;
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 3px solid black;
+  box-shadow: 8px 8px 0 rgba(0,0,0,0.2);
+  transform: rotate(-1deg);
+  margin-left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+/* Form Styles - Clipboard */
+.form {
+  background: white;
+  padding: 4rem 2.5rem 2.5rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background-image: repeating-linear-gradient(transparent, transparent 29px, #e5e5e5 30px);
+}
+
+/* Clip at top */
+.form::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 40px;
+  background: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.form::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 30px;
+  background: #666; /* Metal clip part */
+  border-radius: 2px;
+  z-index: 11;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  background: white; /* Cover lines */
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid black;
+  border-radius: 0;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 1.1rem;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  background: rgba(255, 255, 0, 0.1); /* Highlighter effect */
+  transform: scale(1.02);
+}
+
+.submitBtn {
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  background: black;
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--color-primary);
+  transition: transform 0.2s;
+}
+
+.submitBtn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--color-primary);
+}
+
+.successMessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #d1fae5;
+  color: #065f46;
+  border: 2px dashed #10b981;
+  text-align: center;
+  font-weight: bold;
+  transform: rotate(-1deg);
+}
+
+.errorMessage {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fee2e2;
+  color: #991b1b;
+  border: 2px dashed #ef4444;
+  text-align: center;
+  font-weight: bold;
+  transform: rotate(1deg);
+}
+
+/* Info Section - Sticky Note */
+.infoCard {
+  background: var(--color-accent-1); /* Yellow note */
+  padding: 2.5rem;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  transform: rotate(2deg);
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+
+.infoCard::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.infoCard h3 {
+  font-family: 'Courier New', Courier, monospace;
+  border-bottom: 2px dashed black;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.infoItem {
+  margin-bottom: 2rem;
+}
+
+.infoItem h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.infoItem p {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .form {
+    padding: 1.5rem;
+  }
+}
