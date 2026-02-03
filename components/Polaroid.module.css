@@ -37,7 +37,7 @@
 
 .caption {
   margin-top: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-special-elite), 'Courier New', monospace;
   text-align: center;
   font-weight: bold;
   color: #333;

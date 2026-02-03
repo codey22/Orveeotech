@@ -1,0 +1,76 @@
+.skyContainer {
+  position: fixed;
+  top: 150px;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 50;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.airplaneWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  /* flex-direction: row-reverse; REMOVED for Right-to-Left flight (Plane leads, Banner trails) */
+}
+
+.planeBody {
+  position: relative;
+  width: 180px; /* Reduced from 260px (approx 30% smaller) */
+  height: 100px; /* Reduced from 140px */
+  z-index: 2;
+  /* Adjust margins to keep position stable relative to center */
+  margin-top: -10px; 
+}
+
+.planeSvg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(5px 10px 5px rgba(0,0,0,0.3));
+  overflow: visible; /* Ensure nothing is clipped by the SVG container */
+}
+
+.propeller {
+  display: none;
+}
+
+.bannerContainer {
+  display: flex;
+  align-items: center;
+  /* Position to start exactly at the tail */
+  /* Plane visual tail is at ~140px (scaled). Container is 180px. */
+  /* We need to pull it back significantly to overlap */
+  margin-left: -45px;
+  z-index: 1;
+  position: relative;
+  transform-origin: 0px 40px;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateY(5px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(-2deg); }
+}
+
+.bannerWrapper {
+  position: relative;
+  width: 500px; /* Reduced to 500px */
+  height: 100px;
+  /* Push banner after the rope */
+  margin-left: 75px; 
+}
+
+.bannerSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.2));
+  overflow: visible;
+}
+
+/* We remove .bannerContent and .bannerText css because we will use SVG textPath */

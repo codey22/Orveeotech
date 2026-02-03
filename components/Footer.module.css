@@ -4,27 +4,24 @@
   padding: 4rem 2rem 2rem;
   margin-top: auto;
   position: relative;
-  overflow: hidden;
-  font-family: 'Courier New', Courier, monospace;
+  overflow: visible;
+  font-family: var(--font-special-elite), monospace;
   box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
 }
 
-/* Decorative Tape Line */
+/* Torn Paper Edge on Top */
 .footer::before {
   content: '';
   position: absolute;
-  top: -10px;
+  top: -15px;
   left: 0;
   width: 100%;
   height: 20px;
-  background: repeating-linear-gradient(
-    45deg,
-    #333,
-    #333 10px,
-    #444 10px,
-    #444 20px
-  );
-  border-bottom: 2px solid #111;
+  background-color: #222;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='30' height='15' viewBox='0 0 30 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 L5 5 L10 12 L15 0 L20 10 L25 5 L30 15' fill='black'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg width='30' height='15' viewBox='0 0 30 15' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 L5 5 L10 12 L15 0 L20 10 L25 5 L30 15' fill='black'/%3E%3C/svg%3E");
+  -webkit-mask-repeat: repeat-x;
+  mask-repeat: repeat-x;
 }
 
 .footerContainer {
@@ -53,8 +50,8 @@
   color: white;
   margin-bottom: 1rem;
   font-size: 2.5rem;
-  font-family: 'Arial Black', sans-serif;
-  letter-spacing: -2px;
+  font-family: var(--font-rye), serif;
+  letter-spacing: 1px;
   transform: rotate(-1deg);
   display: inline-block;
 }

@@ -1,9 +1,18 @@
 .pageContainer {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section {
   margin-bottom: 8rem;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sectionTitle {
@@ -15,14 +24,21 @@
   padding-bottom: 1rem;
   display: inline-block;
   text-shadow: 4px 4px 0px var(--color-accent-2);
+  font-family: var(--font-rye), serif;
+  text-align: center;
 }
 
 .sectionSubtitle {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   font-size: 1.5rem;
   color: var(--color-text);
   font-weight: 600;
-  max-width: 600px;
+  max-width: 700px;
+  text-align: center;
+  font-family: var(--font-outfit), sans-serif;
+  border: 1px dashed black;
+  padding: 1rem;
+  background: rgba(255,255,255,0.5);
 }
 
 /* Services Grid */
@@ -30,12 +46,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 3rem;
-  padding: 2rem;
-  background-image: radial-gradient(#ccc 1px, transparent 1px);
-  background-size: 20px 20px;
-  border: var(--border-thick);
-  background-color: white;
+  gap: 4rem;
+  padding: 4rem 2rem;
+  width: 100%;
 }
 
 .serviceLink {
@@ -44,79 +57,52 @@
   display: block;
 }
 
-.serviceCard {
-  width: 300px;
-  height: 300px;
-  background: var(--color-accent-2); /* Fallback */
-  padding: 2rem;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-  transform: rotate(-2deg);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-  border: none; /* Removed thick border for sticky note look */
-}
-
-/* Tape effect */
-.tape {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 30px;
-  background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  border: 1px solid rgba(0,0,0,0.1);
-  opacity: 0.8;
-}
-
-.serviceLink:nth-child(even) .serviceCard {
-  transform: rotate(2deg);
-}
-
-.serviceLink:hover .serviceCard {
-  transform: scale(1.1) rotate(0deg);
-  z-index: 10;
-  box-shadow: 15px 15px 20px rgba(0,0,0,0.2);
-}
-
-.serviceCard h3 {
-  font-family: 'Courier New', Courier, monospace; /* Typewriter feel */
-  font-weight: 900;
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  color: #000;
-}
-
-.serviceCard p {
-  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif; /* Playful handwritten */
-  font-size: 1.1rem;
-  line-height: 1.4;
-  color: #333;
-}
-
-.clickHint {
-  margin-top: auto;
-  font-size: 0.8rem;
-  font-weight: bold;
-  opacity: 0.6;
-  border: 1px dashed black;
-  padding: 2px 5px;
-  align-self: center;
-  background: rgba(255,255,255,0.3);
-}
-
 /* Projects Grid */
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 3rem;
+  gap: 4rem;
+  width: 100%;
+}
+
+/* Realistic Torn Paper Separator */
+.separator {
+  width: 100vw;
+  height: 80px; /* Widened area */
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  z-index: 10;
+  
+  /* Paper Texture Background */
+  background-color: #f3f3f3;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+  
+  /* Double Torn Edge (Top and Bottom) */
+  --tear-path: polygon(
+    0% 20%, 
+    2% 15%, 4% 25%, 6% 15%, 8% 22%, 10% 12%, 12% 25%, 14% 15%, 16% 22%, 18% 12%, 20% 25%, 22% 15%, 24% 22%, 26% 12%, 28% 25%, 30% 15%, 32% 22%, 34% 12%, 36% 25%, 38% 15%, 40% 22%, 42% 12%, 44% 25%, 46% 15%, 48% 22%, 50% 12%, 52% 25%, 54% 15%, 56% 22%, 58% 12%, 60% 25%, 62% 15%, 64% 22%, 66% 12%, 68% 25%, 70% 15%, 72% 22%, 74% 12%, 76% 25%, 78% 15%, 80% 22%, 82% 12%, 84% 25%, 86% 15%, 88% 22%, 90% 12%, 92% 25%, 94% 15%, 96% 22%, 98% 12%, 100% 20%,
+    100% 80%,
+    98% 85%, 96% 75%, 94% 85%, 92% 78%, 90% 88%, 88% 75%, 86% 85%, 84% 78%, 82% 88%, 80% 75%, 78% 85%, 76% 78%, 74% 88%, 72% 75%, 70% 85%, 68% 78%, 66% 88%, 64% 75%, 62% 85%, 60% 78%, 58% 88%, 56% 75%, 54% 85%, 52% 78%, 50% 88%, 48% 75%, 46% 85%, 44% 78%, 42% 88%, 40% 75%, 38% 85%, 36% 78%, 34% 88%, 32% 75%, 30% 85%, 28% 78%, 26% 88%, 24% 75%, 22% 85%, 20% 78%, 18% 88%, 16% 75%, 14% 85%, 12% 78%, 10% 88%, 8% 75%, 6% 85%, 4% 78%, 2% 88%, 0% 80%
+  );
+  
+  clip-path: var(--tear-path);
+  filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.3));
+}
+
+.separator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.05), transparent 20%, transparent 80%, rgba(0,0,0,0.05));
+  pointer-events: none;
 }
 
 @media (max-width: 768px) {

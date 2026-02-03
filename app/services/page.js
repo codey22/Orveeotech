@@ -4,6 +4,7 @@ import ProjectCard from '@/components/ProjectCard';
 import styles from './page.module.css';
 import { servicesData } from '@/lib/servicesData';
 import Link from 'next/link';
+import StickyNote from '@/components/StickyNote';
 
 const projects = [
   {
@@ -46,7 +47,11 @@ export default function Services() {
         {/* Services Section */}
         <section className={styles.section}>
           <h1 className={styles.sectionTitle}>Our Services</h1>
-          <p className={styles.sectionSubtitle}>Pick a card to explore details</p>
+          <p className={styles.sectionSubtitle}>
+            We offer a wide range of digital services to help your business grow. 
+            Pick a card below to explore the details of what we can do for you.
+          </p>
+          
           <div className={styles.servicesGrid}>
             {servicesData.map((service, index) => (
               <Link 
@@ -56,25 +61,30 @@ export default function Services() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <div 
-                  className={styles.serviceCard} 
-                  style={{ backgroundColor: service.color }}
+                <StickyNote 
+                  color={service.color} 
+                  rotation={index % 2 === 0 ? -2 : 2}
+                  decoration={index % 2 === 0 ? "tape" : "pin"}
                 >
-                  <div className={styles.tape}></div>
                   <h3>{service.title}</h3>
                   <p>{service.shortDesc}</p>
-                  <span className={styles.clickHint}>Click to open details ↗</span>
-                </div>
+                  <div style={{ marginTop: '1rem', fontSize: '0.8rem', fontWeight: 'bold', border: '1px dashed black', padding: '2px 5px', display: 'inline-block' }}>
+                    Click to open details ↗
+                  </div>
+                </StickyNote>
               </Link>
             ))}
           </div>
         </section>
 
+        <div className={styles.separator}></div>
+
         {/* Works Section */}
         <section className={styles.section}>
           <h1 className={styles.sectionTitle}>Our Works</h1>
           <p className={styles.sectionSubtitle}>
-            Check out some of our recent live projects.
+            Check out some of our recent live projects. We take pride in delivering 
+            high-quality, functional, and beautiful software.
           </p>
           <div className={styles.projectsGrid}>
             {projects.map((project) => (

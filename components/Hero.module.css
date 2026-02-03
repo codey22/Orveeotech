@@ -6,19 +6,11 @@
   align-items: center;
   overflow: hidden;
   padding: 4rem;
-  background-color: var(--color-bg);
+  background-color: transparent; /* Let global background show through */
 }
 
 .gridBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: radial-gradient(#aaa 1px, transparent 1px);
-  background-size: 30px 30px;
-  opacity: 0.5;
-  z-index: 0;
+  display: none; /* Use global background instead */
 }
 
 .boardContainer {
@@ -59,17 +51,18 @@
 
 .mainTitle {
   font-size: 4rem;
-  font-weight: 900;
+  font-weight: 400;
   margin: 0;
   color: black;
   line-height: 0.9;
-  letter-spacing: -2px;
+  letter-spacing: 0px;
+  font-family: var(--font-rye), serif;
 }
 
 .subtitle {
   display: block;
   font-size: 1rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-special-elite), monospace;
   margin-top: 0.5rem;
   letter-spacing: 2px;
   background: #ffeb3b;
@@ -82,7 +75,7 @@
 }
 
 .tagline {
-  font-family: 'Comic Sans MS', cursive;
+  font-family: var(--font-special-elite), cursive;
   font-size: 1.5rem;
   margin-top: 1.5rem;
   color: #333;
@@ -90,32 +83,32 @@
 
 /* Scattered Elements Positioning */
 .note1 {
-  position: absolute !important;
+  position: absolute;
   top: 10%;
   left: 5%;
 }
 
 .note2 {
-  position: absolute !important;
+  position: absolute;
   bottom: 15%;
   left: 10%;
 }
 
-.note3 {
-  position: absolute !important;
+.polaroid1 {
+  position: absolute;
   top: 15%;
-  right: 5%;
+  right: 10%;
 }
 
-.polaroid1 {
-  position: absolute !important;
-  bottom: 10%;
-  right: 15%;
+.note3 {
+  position: absolute;
+  bottom: 20%;
+  right: 5%;
 }
 
 .actions {
   position: absolute;
-  bottom: -50px;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -124,77 +117,122 @@
 }
 
 .actionLink {
-  background: var(--color-primary);
-  color: white;
+  position: relative;
+  display: inline-block;
   padding: 1rem 2rem;
+  background: white;
+  border: 3px solid black;
+  font-family: var(--font-special-elite), monospace;
   font-weight: bold;
   text-decoration: none;
-  font-family: 'Courier New', monospace;
-  position: relative;
-  box-shadow: 4px 4px 0 black;
-  transition: transform 0.2s;
+  color: black;
+  font-size: 1.2rem;
+  box-shadow: 5px 5px 0 black;
+  transition: transform 0.2s, box-shadow 0.2s;
+  transform: rotate(-1deg);
 }
 
 .actionLink:hover {
-  transform: scale(1.1) rotate(-2deg);
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 7px 7px 0 black;
 }
 
-.actionLink.secondary {
-  background: var(--color-accent-3);
-  color: black;
+.secondary {
+  background: #ff4757;
+  color: white;
+  transform: rotate(2deg);
 }
 
 .tape {
   position: absolute;
-  top: -10px;
+  top: -15px;
   left: 50%;
-  transform: translateX(-50%) rotate(2deg);
-  width: 60px;
-  height: 20px;
-  background: rgba(255,255,255,0.5);
-}
-
-.tapeTop {
-  position: absolute;
-  top: 50px;
-  left: -50px;
-  width: 120vw;
-  transform: rotate(2deg);
-  z-index: 5;
-  pointer-events: none;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 25px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .tapeBottom {
   position: absolute;
-  bottom: 50px;
-  left: -50px;
-  width: 120vw;
-  transform: rotate(-2deg);
-  z-index: 5;
-  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: black;
+  color: #ffeb3b;
+  font-family: var(--font-special-elite), monospace;
+  padding: 0.5rem 0;
+  z-index: 100;
+  border-top: 3px solid #ffeb3b;
 }
 
+/* Responsive Design */
 @media (max-width: 1024px) {
+  .boardContainer {
+    height: auto;
+    min-height: 80vh;
+  }
+  
+  .mainTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 8rem 1rem 4rem 1rem; /* More top padding for navbar */
+    align-items: flex-start;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: visible;
+  }
+
   .boardContainer {
     flex-direction: column;
     height: auto;
-    padding-top: 100px;
+    display: flex;
+    gap: 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .centerPiece {
+    position: relative;
+    transform: rotate(-1deg);
+    margin-bottom: 1rem;
+    width: 100%;
+    padding: 2rem 1rem;
+    max-width: 100%;
   }
   
+  .mainTitle {
+    font-size: 2.2rem;
+  }
+  
+  .tagline {
+    font-size: 1.1rem;
+  }
+
+  /* Reset absolute positioning for scattered elements on mobile */
   .note1, .note2, .note3, .polaroid1 {
     position: relative !important;
-    top: auto;
-    left: auto;
-    right: auto;
-    bottom: auto;
-    margin: 1rem;
+    top: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    right: auto !important;
+    margin: 0 auto;
+    /* Keep original rotation from inline styles or let it be */
   }
   
   .actions {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    margin-top: 2rem;
+     position: relative;
+     bottom: auto;
+     left: auto;
+     transform: none;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 1rem;
+     width: 100%;
   }
 }
