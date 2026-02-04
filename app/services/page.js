@@ -1,10 +1,10 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
 import styles from './page.module.css';
 import { servicesData } from '@/lib/servicesData';
 import Link from 'next/link';
 import StickyNote from '@/components/StickyNote';
+import Doodle from '@/components/Doodle';
+import CoffeeStain from '@/components/CoffeeStain';
 
 const projects = [
   {
@@ -34,22 +34,28 @@ const projects = [
 ];
 
 export const metadata = {
-  title: 'Services & Works | ORVEEOTECH',
+  title: 'Services | ORVEEOTECH',
   description: 'Explore our IT services and view our latest projects.',
 };
 
 export default function Services() {
   return (
     <main>
-      <Navbar />
       <div className={`container ${styles.pageContainer}`}>
         
         {/* Services Section */}
         <section className={styles.section}>
-          <h1 className={styles.sectionTitle}>Our Services</h1>
+          <CoffeeStain style={{ top: '-50px', left: '-50px', opacity: 0.4, transform: 'rotate(45deg)' }} />
+          
+          <h1 className={styles.sectionTitle}>
+            Our Services
+            <Doodle type="scribble" color="#e11d48" style={{ position: 'absolute', top: '-25px', right: '-25px', width: '60px', opacity: 0.6 }} />
+          </h1>
+          
           <p className={styles.sectionSubtitle}>
             We offer a wide range of digital services to help your business grow. 
-            Pick a card below to explore the details of what we can do for you.
+            <br />
+            <strong>Pick a card below to explore.</strong>
           </p>
           
           <div className={styles.servicesGrid}>
@@ -58,18 +64,16 @@ export default function Services() {
                 href={`/services/${service.slug}`} 
                 key={index} 
                 className={styles.serviceLink}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 <StickyNote 
                   color={service.color} 
                   rotation={index % 2 === 0 ? -2 : 2}
-                  decoration={index % 2 === 0 ? "tape" : "pin"}
+                  decoration="pin"
                 >
                   <h3>{service.title}</h3>
                   <p>{service.shortDesc}</p>
-                  <div style={{ marginTop: '1rem', fontSize: '0.8rem', fontWeight: 'bold', border: '1px dashed black', padding: '2px 5px', display: 'inline-block' }}>
-                    Click to open details ↗
+                  <div style={{ marginTop: '1.5rem', fontFamily: 'var(--font-special-elite)', fontSize: '0.9rem', fontWeight: 'bold', borderBottom: '2px solid black', paddingBottom: '2px', display: 'inline-block' }}>
+                    View Details &rarr;
                   </div>
                 </StickyNote>
               </Link>
@@ -77,11 +81,39 @@ export default function Services() {
           </div>
         </section>
 
+        {/* Coming Soon Section */}
+        <section className={styles.comingSoonSection}>
+           <h2 className={styles.sectionTitle} style={{ fontSize: '2.5rem', transform: 'rotate(1deg)' }}>Future Expansion</h2>
+           <p className={styles.sectionSubtitle} style={{ maxWidth: '600px', transform: 'rotate(-1deg)' }}>
+             We are constantly evolving. Here is what's currently on our drafting board.
+           </p>
+           
+           <div className={styles.comingSoonGrid}>
+             <div className={styles.comingSoonCard}>
+               <div className={styles.comingSoonBadge}>Coming Soon</div>
+               <h3>Cloud Engineering</h3>
+               <p>Scalable cloud infrastructure, DevOps pipelines, and serverless architectures designed for the enterprise.</p>
+               <Doodle type="circle" color="#999" style={{ position: 'absolute', bottom: '10px', right: '10px', width: '40px', opacity: 0.3 }} />
+             </div>
+             
+             <div className={styles.comingSoonCard}>
+               <div className={styles.comingSoonBadge}>Coming Soon</div>
+               <h3>Digital Marketing</h3>
+               <p>Data-driven SEO, content strategy, and brand growth campaigns to put your business on the map.</p>
+               <Doodle type="arrow" color="#999" style={{ position: 'absolute', top: '10px', left: '10px', width: '30px', transform: 'rotate(180deg)', opacity: 0.3 }} />
+             </div>
+           </div>
+           <CoffeeStain style={{ bottom: '20px', right: '10%', opacity: 0.2 }} />
+        </section>
+
         <div className={styles.separator}></div>
 
         {/* Works Section */}
         <section className={styles.section}>
-          <h1 className={styles.sectionTitle}>Our Works</h1>
+          <h1 className={styles.sectionTitle} style={{ transform: 'rotate(2deg)' }}>
+             Our Works
+             <Doodle type="underline" color="#059669" style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', opacity: 0.5 }} />
+          </h1>
           <p className={styles.sectionSubtitle}>
             Check out some of our recent live projects. We take pride in delivering 
             high-quality, functional, and beautiful software.
@@ -91,10 +123,10 @@ export default function Services() {
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
+          <CoffeeStain style={{ top: '50%', right: '-40px', opacity: 0.3 }} />
         </section>
 
       </div>
-      <Footer />
     </main>
   );
 }

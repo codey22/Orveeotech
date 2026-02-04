@@ -8,16 +8,16 @@ export default function Airplane() {
     <div className={styles.skyContainer}>
       <motion.div
         className={styles.airplaneWrapper}
+        initial={{ x: '-850px' }} // Minimized start distance to reduce re-appearance delay
         animate={{
-          x: ['120vw', '-100vw'], // Fly Right to Left
+          x: ['-850px', 'calc(100vw + 50px)'], // Just enough to clear screen edges
           y: [50, 80, 20, 60, 30],
         }}
         transition={{
           x: {
-            duration: 35, // Slower flight speed
+            duration: 35, // Increased speed (reduced duration from 45s)
             repeat: Infinity,
             ease: "linear",
-            delay: 1,
           },
           y: {
             duration: 10,
@@ -60,8 +60,15 @@ export default function Airplane() {
                </filter>
              </defs>
 
-             {/* Scale -1,1 to face LEFT (flight direction) */}
-             <g transform="translate(200, 0) scale(-1, 1)">
+             {/* Face RIGHT (Natural Direction) */}
+             <g transform="translate(0, 0)">
+                
+                {/* Far Wing (Long, Chamfered, Star at Tip) */}
+                <g>
+                    <path d="M115 45 L180 45 L185 48 L180 51 L115 51 Z" fill="#b71c1c" stroke="#8e0000" strokeWidth="1" />
+                    {/* Star on Far Wing */}
+                    <polygon points="175,46 176,47.5 178,47.5 176.5,48.5 177,50 175,49 173,50 173.5,48.5 172,47.5 174,47.5" fill="white" opacity="0.8" />
+                </g>
                 
                 {/* Propeller - Side View (Spinning Blur) */}
                 <g transform="translate(195, 45)">
@@ -130,20 +137,15 @@ export default function Airplane() {
                    </g>
                 </g>
 
-                {/* Wings & Struts */}
-                {/* Lower Wing */}
-                <path d="M120 55 L170 55 Q175 55 175 60 L120 60 Z" fill="#d32f2f" stroke="#b71c1c" strokeWidth="1" filter="url(#dropShadow)" />
-                
-                {/* Cabane Struts (Fuselage to Upper Wing) */}
-                <path d="M140 35 L135 25" stroke="#37474f" strokeWidth="2" />
-                <path d="M160 38 L165 25" stroke="#37474f" strokeWidth="2" />
-                
-                {/* Interplane Struts (Wing to Wing) */}
-                <path d="M130 55 L125 25" stroke="#37474f" strokeWidth="2" />
-                <path d="M165 55 L170 25" stroke="#37474f" strokeWidth="2" />
-
                 {/* Fuselage Body */}
                 <path d="M40 45 Q60 35 100 35 L170 38 Q185 40 185 50 Q185 60 170 62 L100 65 Q60 65 40 55 Z" fill="url(#fuselageGradient)" stroke="#b71c1c" strokeWidth="1" />
+
+                {/* Near Wing (Long, Chamfered, Star at Tip) */}
+                <g>
+                    <path d="M105 52 L170 52 L175 55 L170 58 L105 58 Z" fill="#d32f2f" stroke="#c62828" strokeWidth="1" filter="url(#dropShadow)" />
+                    {/* Star on Near Wing */}
+                    <polygon points="165,53 166,54.5 168,54.5 166.5,55.5 167,57 165,56 163,57 163.5,55.5 162,54.5 164,54.5" fill="white" />
+                </g>
                 
                 {/* Pilot Details */}
                 <g transform="translate(115, 35)">
@@ -157,9 +159,6 @@ export default function Airplane() {
 
                 {/* Cockpit Rim */}
                 <path d="M100 35 Q115 38 130 35" stroke="#3e2723" strokeWidth="2" fill="none" />
-
-                {/* Upper Wing */}
-                <path d="M110 25 L180 25 Q185 25 185 20 L110 20 Z" fill="#f44336" stroke="#c62828" strokeWidth="1" filter="url(#dropShadow)" />
                 
                 {/* Tail */}
                 <g transform="translate(10, 35)">
@@ -178,23 +177,29 @@ export default function Airplane() {
 
         {/* Trailing Banner with Realistic Rope & Motion */}
         <div className={styles.bannerContainer}>
-            {/* Realistic Tow Rope - Starts at 0 (Tail position) and goes to Banner */}
-            <svg width="80" height="100" className={styles.ropeSvg} style={{ position: 'absolute', left: '0', top: '0', zIndex: 0, overflow: 'visible' }}>
-                {/* Connection knot at plane tail (Start of rope) */}
-                <circle cx="0" cy="40" r="3" fill="#3e2723" />
+            {/* Realistic Tow Rope - Connects Banner (Left) to Plane (Right) */}
+            <svg width="80" height="100" className={styles.ropeSvg} style={{ position: 'absolute', right: '0', top: '0', zIndex: 2, overflow: 'visible' }}>
+                {/* Connection at Banner side (Left end) - Tying to Grommet */}
+                <g transform="translate(0, 55)">
+                    {/* Knot Loop */}
+                    <path d="M5 -3 Q8 0 5 3 Q2 0 5 -3" fill="none" stroke="#3e2723" strokeWidth="2" />
+                    <path d="M-2 -2 Q3 0 -2 2" fill="none" stroke="#3e2723" strokeWidth="2" />
+                    {/* Knot Center */}
+                    <circle cx="2" cy="0" r="2.5" fill="#3e2723" />
+                </g>
                 
                 {/* Rope simulating tension and slack (Wind drag) */}
-                <path d="M0,40 C20,40 50,55 80,50" fill="none" stroke="#5d4037" strokeWidth="2" strokeLinecap="round">
-                    <animate attributeName="d" dur="1.5s" repeatCount="indefinite"
+                <path d="M0,55 C20,55 50,60 80,50" fill="none" stroke="#5d4037" strokeWidth="2" strokeLinecap="round">
+                    <animate attributeName="d" dur="0.8s" repeatCount="indefinite"
                         values="
-                          M0,40 C20,40 50,55 80,50; 
-                          M0,40 C20,45 50,35 80,50; 
-                          M0,40 C20,40 50,55 80,50" 
+                          M0,55 C20,55 50,60 80,50; 
+                          M0,55 C20,60 50,45 80,50; 
+                          M0,55 C20,55 50,60 80,50" 
                         calcMode="spline" keyTimes="0;0.5;1" keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
                     />
                 </path>
                 
-                {/* Connection at Banner side */}
+                {/* Connection knot at plane tail (Right end) */}
                 <circle cx="80" cy="50" r="2" fill="#3e2723" />
             </svg>
 
@@ -219,26 +224,32 @@ export default function Airplane() {
                     <path fill="#fff8e1" stroke="#8d6e63" strokeWidth="1" filter="url(#fabricTexture)">
                         <animate 
                             attributeName="d" 
-                            dur="2s" 
+                            dur="0.8s" 
                             repeatCount="indefinite"
                             values="
-                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z;
-                                M0,35 Q70,55 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z;
-                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z
+                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z;
+                                M0,35 Q70,55 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,95 280,75 T140,75 T0,75 Z;
+                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z
                             "
                         />
                     </path>
+
+                    {/* Grommet (Ring) for Rope Connection - Reinforced Corner */}
+                    <g>
+                         <circle cx="492" cy="55" r="4" fill="#a1887f" stroke="#5d4037" strokeWidth="1" />
+                         <circle cx="492" cy="55" r="2" fill="none" stroke="#3e2723" strokeWidth="1" />
+                    </g>
                     
                     {/* Shadow overlay for depth */}
                     <path fill="url(#bannerShadow)" stroke="none" opacity="0.3">
                          <animate 
                             attributeName="d" 
-                            dur="2s" 
+                            dur="0.8s" 
                             repeatCount="indefinite"
                             values="
-                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z;
-                                M0,35 Q70,55 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z;
-                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 T280,75 T140,75 T0,75 Z
+                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z;
+                                M0,35 Q70,55 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,95 280,75 T140,75 T0,75 Z;
+                                M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z
                             "
                         />
                     </path>
@@ -247,7 +258,7 @@ export default function Airplane() {
                     <path id="textCurve" fill="none" stroke="none">
                          <animate 
                             attributeName="d" 
-                            dur="2s" 
+                            dur="0.8s" 
                             repeatCount="indefinite"
                             values="
                                 M10,60 Q80,40 150,60 T290,60 T430,60 L500,60;

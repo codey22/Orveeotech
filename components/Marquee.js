@@ -9,7 +9,7 @@ export default function Marquee({ text, className }) {
         {/* Repeat text multiple times to ensure seamless loop */}
         {[...Array(10)].map((_, i) => (
           <span key={i} className={styles.marqueeText}>
-            {text} • 
+            {text}
           </span>
         ))}
       </div>

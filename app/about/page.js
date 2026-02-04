@@ -1,7 +1,7 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import styles from './page.module.css';
 import StickyNote from '@/components/StickyNote';
+import Doodle from '@/components/Doodle';
+import CoffeeStain from '@/components/CoffeeStain';
 
 export const metadata = {
   title: 'About | ORVEEOTECH',
@@ -11,7 +11,6 @@ export const metadata = {
 export default function About() {
   return (
     <main>
-      <Navbar />
       <div className={`container ${styles.aboutContainer}`}>
         <header className={styles.header}>
           <h1>Who We Are</h1>
@@ -19,92 +18,112 @@ export default function About() {
             We are not just another IT company. We are a launchpad for future tech leaders, 
             a hub for innovation, and a partner in your digital transformation journey.
           </p>
+          <Doodle type="scribble" color="#e11d48" style={{ position: 'absolute', top: '-20px', right: '-20px', width: '80px', transform: 'rotate(15deg)', opacity: 0.6 }} />
         </header>
 
-        <div className={styles.separator}></div>
-
-        <section className={styles.introSection}>
-          <StickyNote color="white" rotation={-1} decoration="tape" className="w-full max-w-3xl">
-            <h3>Our Mission</h3>
-            <p>
-              At <strong>ORVEEOTECH</strong>, we believe in the transformative power of technology when applied with purpose. 
-              We are an innovative IT Technology company dedicated to delivering top-tier digital solutions while simultaneously 
-              cultivating the next generation of tech talent. Our mission is to bridge the gap between theoretical knowledge 
-              and industry reality, providing a unique ecosystem where client success and developer growth happen side by side.
-              <br/><br/>
-              We don't just write code; we craft solutions that stand the test of time, ensuring that every project we undertake 
-              becomes a stepping stone for future innovation.
-            </p>
-          </StickyNote>
+        {/* Origin Story - Typewriter Style */}
+        <section className={styles.typewriterSection}>
+          <h2 style={{ fontFamily: 'var(--font-rye)', marginBottom: '1.5rem', borderBottom: '2px dashed #ccc', paddingBottom: '0.5rem' }}>The Origin Story</h2>
+          <p>
+            It started with a simple idea: <strong>Code should mean something.</strong>
+            <br/><br/>
+            Founded in 2026, ORVEEOTECH began as a rebellion against "good enough" software. We saw an industry flooded with quick fixes and bloated codebases. We wanted to build things that last. Things that work. Things that have soul.
+            <br/><br/>
+            From a small team of passionate developers, we've grown into a full-fledged technology partner, but our core philosophy remains unchanged: We treat every line of code as a craft.
+          </p>
+          <CoffeeStain style={{ bottom: '-30px', right: '-30px', opacity: 0.4 }} />
         </section>
 
-        <div className={styles.separator}></div>
+        {/* Core Values - Index Cards */}
+        <section className={styles.sectionWrapper}>
+          <h2 style={{ fontFamily: 'var(--font-rye)', fontSize: '2.5rem', textAlign: 'center', marginBottom: '2rem' }}>Core Values</h2>
+          <div className={styles.valuesGrid}>
+            <div className={styles.indexCard}>
+              <h3>Craftsmanship</h3>
+              <p>
+                We don't just "write code". We engineer solutions. Every function, every class, every component is designed with intent and precision. Quality isn't an afterthought; it's the foundation.
+              </p>
+              <Doodle type="star" color="#d97706" style={{ position: 'absolute', top: '10px', right: '10px', width: '30px' }} />
+            </div>
+            <div className={styles.indexCard}>
+              <h3>Transparency</h3>
+              <p>
+                No hidden costs. No technical jargon designed to confuse. We believe in radical transparency with our clients and our students. You see what we see.
+              </p>
+            </div>
+            <div className={styles.indexCard}>
+              <h3>Innovation</h3>
+              <p>
+                We respect the past but build for the future. We constantly explore new technologies—from AI to Cloud Native—to ensure our solutions are future-proof.
+              </p>
+              <Doodle type="arrow" color="#059669" style={{ position: 'absolute', bottom: '10px', right: '10px', width: '40px', transform: 'rotate(-20deg)' }} />
+            </div>
+          </div>
+        </section>
 
+        {/* What We Do - Sticky Notes (Refined) */}
         <section className={styles.contentGrid}>
           <StickyNote color="yellow" rotation={2} decoration="pin">
-            <h3>IT Solutions & Delivery</h3>
+            <h3>IT Solutions</h3>
             <p>
-              ORVEEOTECH is a premier IT Technology company focused on delivering high-quality, 
-              scalable client-based IT solutions. From web development to complex system architectures, 
-              we build software that drives business growth.
+              From web development to complex system architectures, we build software that drives business growth.
               <br/><br/>
-              Our team of expert developers ensures that every line of code serves a purpose, optimizing performance
-              and user experience to meet the rigorous demands of the modern digital landscape.
+              Our team ensures that every line of code serves a purpose, optimizing performance and user experience.
             </p>
           </StickyNote>
 
-          <StickyNote color="pink" rotation={-2} decoration="tape">
-            <h3>Not Just Training</h3>
+          <StickyNote color="pink" rotation={-2}>
+            <h3>The Academy</h3>
             <p>
-              <strong>We are NOT a traditional training institute.</strong> We bridge the gap between 
-              academic learning and industry demands. Our program is designed for individuals who already 
-              possess basic to intermediate coding knowledge and are ready to level up.
+              <strong>We are NOT a traditional training institute.</strong> We bridge the gap between academic learning and industry demands.
               <br/><br/>
-              We believe in learning by doing. No boring lectures, just real challenges that prepare you 
-              for the actual battlefield of software development.
+              No boring lectures. Just real challenges that prepare you for the actual battlefield of software development.
             </p>
           </StickyNote>
 
-          <StickyNote color="blue" rotation={1} decoration="pin">
-            <h3>Project Simulation</h3>
+          <StickyNote color="blue" rotation={1}>
+            <h3>Simulation</h3>
             <p>
-              Experience the pressure and precision of real-world development. We offer 
-              <strong> Real-time Client Project Simulation Training</strong> where you work on actual 
-              deliverables, timelines, and standards—not just dummy projects.
+              Experience the pressure and precision of real-world development. 
               <br/><br/>
-              You will face real client requirements, changing scopes, and tight deadlines, giving you 
-              the experience that usually takes years to acquire in a junior role.
-            </p>
-          </StickyNote>
-
-          <StickyNote color="green" rotation={-1} decoration="tape">
-            <h3>Placement Assistance</h3>
-            <p>
-              Our program includes certification and dedicated placement assistance to help you 
-              land your dream role in the tech industry. We prepare you not just to code, but to deliver value.
-              <br/><br/>
-              With our strong industry connections and portfolio-building approach, you'll walk into interviews 
-              with confidence and a body of work that speaks for itself.
+              You will face real client like requirements, changing scopes, and tight deadlines—giving you the experience that usually takes years to acquire.
             </p>
           </StickyNote>
         </section>
         
-        <div className={styles.separator}></div>
+        {/* Our Process - Replaces The Squad */}
+        <section className={styles.sectionWrapper}>
+           <h2 style={{ fontFamily: 'var(--font-rye)', fontSize: '2.5rem', textAlign: 'center', marginBottom: '2rem' }}>Our Process</h2>
+           <div className={styles.valuesGrid}>
+             <div className={styles.indexCard}>
+               <h3>01. Discovery</h3>
+               <p>We start by listening. Understanding your vision is the first line of code we write.</p>
+             </div>
+             <div className={styles.indexCard}>
+               <h3>02. Craft</h3>
+               <p>We build with precision. No bloat, just efficient, scalable, and beautiful solutions.</p>
+             </div>
+             <div className={styles.indexCard}>
+               <h3>03. Launch</h3>
+               <p>We ship confidence. Your product goes live, ready to handle the real world.</p>
+             </div>
+           </div>
+           <CoffeeStain style={{ top: '50%', left: '10%', opacity: 0.2 }} />
+        </section>
 
+        {/* Future Section */}
         <section className={styles.future}>
-          <StickyNote color="yellow" rotation={0} decoration="tape">
+          <StickyNote color="white" rotation={0} className={styles.wideNote}>
             <h3>Future Pipeline</h3>
             <p>
-              While we currently focus on intermediate developers, we are actively planning 
-              comprehensive beginner training modules for the near future. 
+              While we currently focus on intermediate developers, we are actively planning comprehensive beginner training modules. 
               <br/><br/>
               We are expanding our horizons to include AI-driven development tools and cloud-native architecture workshops.
-              Stay tuned for updates as we continue to grow our educational ecosystem.
             </p>
+            <Doodle type="underline" color="#333" style={{ position: 'absolute', bottom: '20px', left: '20px', width: '100px', opacity: 0.5 }} />
           </StickyNote>
         </section>
       </div>
-      <Footer />
     </main>
   );
 }

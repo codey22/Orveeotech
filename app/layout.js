@@ -1,6 +1,8 @@
 import { Outfit, Rye, Special_Elite } from "next/font/google";
 import "./globals.css";
 import Airplane from "@/components/Airplane";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -23,18 +25,16 @@ const specialElite = Special_Elite({
 export const metadata = {
   title: "ORVEEOTECH | Creative IT Solutions",
   description: "Modern IT Technology Company. Building the future with retro soul.",
-  icons: {
-    icon: '/favicon.ico', 
-  }
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${outfit.variable} ${rye.variable} ${specialElite.variable}`}>
-        <div className="grain-overlay"></div>
         <Airplane />
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

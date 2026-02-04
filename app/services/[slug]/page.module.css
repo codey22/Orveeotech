@@ -1,124 +1,267 @@
 .main {
   min-height: 100vh;
+  background-color: #f0e6d2; /* Vintage paper color base */
   background-image: 
-    linear-gradient(#e5e5e5 1px, transparent 1px),
-    linear-gradient(90deg, #e5e5e5 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-color: #f8f9fa;
-  padding-bottom: 4rem;
+    linear-gradient(90deg, transparent 95%, rgba(0,0,0,0.05) 95%),
+    linear-gradient(transparent 95%, rgba(0,0,0,0.05) 95%);
+  background-size: 40px 40px;
+  padding-bottom: 6rem;
 }
 
 .container {
-  padding-top: 4rem;
-  max-width: 900px;
+  padding-top: 8rem;
+  max-width: 850px;
+  position: relative;
+}
+
+.navBar {
+  margin-bottom: 1rem;
 }
 
 .backLink {
-  display: inline-block;
-  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-special-elite), monospace;
   font-weight: 700;
   text-decoration: none;
-  color: var(--color-text);
-  background: white;
-  padding: 0.5rem 1rem;
-  border: 2px solid black;
-  border-radius: 5px;
-  box-shadow: 4px 4px 0 black;
-  transition: all 0.2s;
+  color: #3e2723;
+  font-size: 1.1rem;
+  transition: transform 0.2s;
 }
 
 .backLink:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 black;
+  transform: translateX(-5px);
+  text-decoration: underline;
+}
+
+.arrow {
+  font-size: 1.2rem;
+}
+
+.folderTab {
+  width: 200px;
+  height: 40px;
+  background: #d7c9aa;
+  border: 2px solid #5d4037;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0; /* Behind paper */
+  box-shadow: 2px -2px 5px rgba(0,0,0,0.1);
+}
+
+.folderTab span {
+  font-family: var(--font-special-elite), monospace;
+  font-size: 0.9rem;
+  color: #b91c1c; /* Red stamp color */
+  font-weight: bold;
+  letter-spacing: 2px;
+  transform: rotate(-2deg);
 }
 
 .paper {
-  background: white;
-  border: 3px solid black;
-  box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
-  overflow: hidden;
+  background: #fdfbf7; /* Off-white paper */
+  border: 1px solid #d1d5db;
+  box-shadow: 
+    0 1px 2px rgba(0,0,0,0.05), 
+    0 10px 15px -3px rgba(0,0,0,0.1), 
+    0 4px 6px -2px rgba(0,0,0,0.05),
+    10px 10px 0 rgba(0,0,0,0.1); /* Hard shadow */
   position: relative;
-  transform: rotate(-1deg);
-  animation: float 6s ease-in-out infinite;
+  z-index: 1;
+  padding: 0;
+  transform: rotate(0.5deg);
+  overflow: hidden; /* For texture containment */
+}
+
+/* Paper texture overlay */
+.paperTexture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
 }
 
 .header {
-  padding: 3rem 2rem;
-  border-bottom: 3px solid black;
-  color: black;
-  text-align: center;
+  padding: 4rem 3rem 2rem 3rem;
+  position: relative;
+  text-align: left;
+  border-bottom: 2px dashed #9ca3af;
 }
 
-.header h1 {
-  font-size: 3.5rem;
+.stampBox {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  border: 4px double #b91c1c;
+  padding: 0.5rem 1rem;
+  transform: rotate(-15deg);
+  opacity: 0.8;
+  mask-image: url("data:image/svg+xml,%3Csvg width='200' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+.stampText {
+  color: #b91c1c;
+  font-family: var(--font-special-elite), monospace;
+  font-weight: 900;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-rye), serif;
+  font-size: 3rem;
+  color: #1f2937;
   margin-bottom: 1rem;
-  text-shadow: 3px 3px 0 rgba(255,255,255,0.5);
+  position: relative;
+  display: inline-block;
+  z-index: 1;
 }
 
 .subtitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-  opacity: 0.9;
+  font-family: var(--font-special-elite), monospace;
+  font-size: 1.2rem;
+  color: #4b5563;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.divider {
+  text-align: center;
+  padding: 1rem 0;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  letter-spacing: 5px;
 }
 
 .content {
-  padding: 3rem 2rem;
-  font-size: 1.15rem;
+  padding: 2rem 3rem 4rem 3rem;
+  font-family: var(--font-special-elite), monospace; /* Typewriter font for content */
+  font-size: 1.05rem;
   line-height: 1.8;
+  color: #1f2937;
+  position: relative;
+  z-index: 1;
 }
 
 .content h2 {
-  font-size: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--color-primary);
-  border-left: 5px solid var(--color-secondary);
-  padding-left: 1rem;
+  font-family: var(--font-rye), serif;
+  font-size: 1.8rem;
+  color: #111827;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #1f2937;
+  padding-bottom: 0.5rem;
+  display: inline-block;
 }
 
 .content h3 {
-  font-size: 1.5rem;
+  font-family: var(--font-rye), serif;
+  font-size: 1.4rem;
+  color: #374151;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
+.content p {
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
 .content ul {
-  list-style-type: none;
-  padding: 0;
+  list-style: none;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
 }
 
 .content li {
   margin-bottom: 1rem;
-  padding-left: 2rem;
   position: relative;
+  padding-left: 1.5rem;
 }
 
 .content li::before {
-  content: '→';
+  content: '•';
   position: absolute;
   left: 0;
+  color: #b91c1c; /* Red bullet points */
+  font-size: 1.5rem;
+  line-height: 1rem;
+  top: 0.4rem;
+}
+
+.content strong {
+  color: #000;
   font-weight: 900;
-  color: var(--color-primary);
 }
 
-.actions {
+.footerNote {
+  background: #f3f4f6;
   padding: 2rem;
+  margin: 0 3rem 3rem 3rem;
+  border: 1px dashed #9ca3af;
+  position: relative;
   text-align: center;
-  border-top: 2px dashed #ccc;
-  background: #fafafa;
+  transform: rotate(-1deg);
 }
 
-@keyframes float {
-  0%, 100% { transform: rotate(-1deg) translateY(0); }
-  50% { transform: rotate(-1deg) translateY(-5px); }
+.footerNote p {
+  font-family: var(--font-rye), serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.ctaButton {
+  display: inline-block;
+  background: #1f2937;
+  color: white;
+  padding: 0.8rem 2rem;
+  text-decoration: none;
+  font-family: var(--font-special-elite), monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+  transition: all 0.2s;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+  background: #000;
 }
 
 @media (max-width: 768px) {
-  .header h1 {
-    font-size: 2.5rem;
+  .container {
+    padding-top: 8rem; /* Increased to clear the fixed navbar on mobile */
   }
-  .paper {
-    transform: none;
-    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+  
+  .header, .content {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+  
+  .stampBox {
+    right: 1rem;
+    top: 1rem;
+    transform: rotate(-15deg) scale(0.8);
+  }
+  
+  .folderTab {
+    margin-left: 1rem;
   }
 }

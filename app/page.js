@@ -1,44 +1,51 @@
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import StickyNote from '@/components/StickyNote';
+import Doodle from '@/components/Doodle';
+import CoffeeStain from '@/components/CoffeeStain';
 import styles from './page.module.css';
 
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <div className={styles.homeContainer}>
         <Hero />
         
         <div className={styles.separator}></div>
         
         <section className={`${styles.section} ${styles.paperBg}`}>
-          <h2 className={styles.sectionTitle}>Why Choose Us?</h2>
+          <CoffeeStain style={{ top: '-30px', left: '5%', opacity: 0.5 }} />
+          <h2 className={styles.sectionTitle}>
+            Why Choose Us?
+            <Doodle type="scribble" color="#ff4757" style={{ position: 'absolute', bottom: '-25px', right: '-30px', width: '90px', transform: 'rotate(-10deg)' }} />
+          </h2>
           
           <div className={styles.grid}>
-            <StickyNote color="yellow" rotation={1} decoration="tape">
+            <StickyNote color="yellow" rotation={1}>
               <h3>Innovative Thinking</h3>
               <p>
                 We don't just follow trends; we set them. Our team constantly explores new technologies 
                 to bring you the most efficient and modern solutions available.
               </p>
+              <Doodle type="star" color="#d97706" style={{ position: 'absolute', top: '5px', left: '10px', width: '30px', opacity: 0.6 }} />
+              <Doodle type="arrow" color="#d97706" style={{ position: 'absolute', bottom: '10px', right: '10px', width: '40px', transform: 'rotate(-45deg)', opacity: 0.4 }} />
             </StickyNote>
             
-            <StickyNote color="green" rotation={-2} decoration="pin">
+            <StickyNote color="green" rotation={-2}>
               <h3>Client-Centric</h3>
               <p>
                 Your success is our success. We work closely with you to understand your unique challenges 
                 and tailor our services to meet your specific goals.
               </p>
+              <Doodle type="circle" color="#059669" style={{ position: 'absolute', top: '50%', left: '50%', width: '120%', height: '80%', transform: 'translate(-50%, -50%) rotate(-5deg)', opacity: 0.1 }} />
             </StickyNote>
             
-            <StickyNote color="pink" rotation={2} decoration="tape">
+            <StickyNote color="pink" rotation={2}>
               <h3>Future Ready</h3>
               <p>
                 We build software that lasts. Our scalable architectures ensure that your application 
                 can grow alongside your business without needing a rewrite.
               </p>
+              <Doodle type="underline" color="#be185d" style={{ position: 'absolute', top: '45px', left: '20px', width: '150px', opacity: 0.5 }} />
             </StickyNote>
           </div>
         </section>
@@ -46,9 +53,13 @@ export default function Home() {
         <div className={styles.separator}></div>
 
         <section className={styles.section}>
-          <h2 className={styles.sectionTitle} style={{ transform: 'rotate(1deg)' }}>Our Philosophy</h2>
+          <CoffeeStain style={{ top: '10%', right: '5%', opacity: 0.2, transform: 'scale(0.8) rotate(90deg)' }} />
+          <h2 className={styles.sectionTitle} style={{ transform: 'rotate(1deg)' }}>
+             Our Philosophy
+             <Doodle type="underline" color="#059669" style={{ position: 'absolute', bottom: '10px', left: '10%', width: '80%', opacity: 0.5 }} />
+          </h2>
           
-          <StickyNote color="white" rotation={0} decoration="tape" className={styles.wideNote}>
+          <StickyNote color="white" rotation={0} className={styles.wideNote}>
             <h3>"Code with Purpose"</h3>
             <p>
               We believe that every line of code should serve a clear purpose. Bloatware is the enemy of performance. 
@@ -57,10 +68,32 @@ export default function Home() {
               Our development process is transparent, collaborative, and agile. We invite you to be a part of the journey, 
               giving you full visibility into the progress of your project from day one.
             </p>
+            <div style={{ marginTop: '2rem', fontFamily: 'var(--font-special-elite), monospace', textAlign: 'right', color: '#555' }}>
+              - The Orveeotech Team
+              <Doodle type="scribble" color="#333" style={{ width: '60px', marginLeft: '10px', verticalAlign: 'middle', opacity: 0.5 }} />
+            </div>
           </StickyNote>
         </section>
+
+        <div className={styles.separator}></div>
+
+        {/* New Testimonials Section */}
+        <section className={`${styles.section} ${styles.paperBg}`}>
+          <h2 className={styles.sectionTitle} style={{ transform: 'rotate(-2deg)' }}>What People Say</h2>
+          <div className={styles.grid}>
+             <StickyNote color="blue" rotation={-3}>
+                <h3>"Exceptional!"</h3>
+                <p>"The team transformed our vision into a reality. The attention to detail was impressive."</p>
+             </StickyNote>
+             <StickyNote color="yellow" rotation={2}>
+                <h3>"Highly Recommended"</h3>
+                <p>"Professional, timely, and incredibly skilled. A joy to work with from start to finish."</p>
+             </StickyNote>
+          </div>
+          <CoffeeStain style={{ bottom: '10%', right: '10%', opacity: 0.3, transform: 'scale(1.2)' }} />
+        </section>
+
       </div>
-      <Footer />
     </main>
   );
 }

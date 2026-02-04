@@ -3,9 +3,11 @@
   padding: 1rem 1rem 3rem 1rem;
   box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
   width: 220px;
+  max-width: 90vw; /* Responsive constraint */
   transform-origin: center;
   transition: transform 0.3s ease;
   z-index: 2;
+  position: relative; /* Needed for pin positioning */
 }
 
 .polaroid:hover {

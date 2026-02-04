@@ -36,29 +36,56 @@
   --dot-space: 20px;
 }
 
-/* Retro Scrollbar */
+/* Global Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Retro Scrollbar - Refined */
 ::-webkit-scrollbar {
-  width: 16px;
-  background-color: #f0e6d2; /* Beige track */
+  width: 12px;
+  background-color: #f8f9fa; /* Matches bg */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0e6d2; /* Vintage paper beige */
   border-left: 2px solid #1a1a1a;
+  background-image: 
+    radial-gradient(#ccc 1px, transparent 1px);
+  background-size: 4px 4px;
 }
 
 ::-webkit-scrollbar-thumb {
   background-color: #ff4757; /* Retro Red */
+  background-image: 
+    linear-gradient(45deg, 
+      rgba(0,0,0,0.1) 25%, 
+      transparent 25%, 
+      transparent 50%, 
+      rgba(0,0,0,0.1) 50%, 
+      rgba(0,0,0,0.1) 75%, 
+      transparent 75%, 
+      transparent);
+  background-size: 10px 10px;
   border: 2px solid #1a1a1a;
-  box-shadow: inset 2px 2px 0px rgba(255,255,255,0.3);
+  border-radius: 20px;
+  border-right: 2px solid #1a1a1a; /* Explicit border to ensure visibility */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #e84118;
+  background-color: #eccc68; /* Mustard Yellow on hover */
+  border-color: #1a1a1a;
 }
 
-::-webkit-scrollbar-track {
-  background-image: radial-gradient(#ccc 1px, transparent 1px);
-  background-size: 4px 4px;
+html {
+  overflow-x: hidden; /* Prevent horizontal scroll on the viewport */
+  margin: 0;
+  padding: 0;
 }
 
-html, body {
+body {
   margin: 0;
   padding: 0;
   background-color: var(--color-bg);
@@ -68,7 +95,6 @@ html, body {
   background-size: 20px 20px;
   color: var(--color-text);
   font-family: var(--font-main);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   position: relative;
   min-height: 100vh;
@@ -80,6 +106,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding-top: 0; /* No gap for fixed Navbar - Hero starts at top */
 }
 
 /* Grain Animation Overlay */
@@ -172,38 +199,10 @@ p {
   box-shadow: var(--shadow-sm);
 }
 
-/* Torn Paper Effect Class */
+/* Torn Paper Effect Removed - Kept base class for layout */
 .tornPaper {
   position: relative;
   background: white;
   padding: 2rem;
   box-shadow: var(--shadow-sm);
-}
-
-.tornPaper::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-color: white;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L5 0 L10 10 L15 0 L20 10' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L5 0 L10 10 L15 0 L20 10' fill='black'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
-}
-
-.tornPaper::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-color: white;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L5 10 L10 0 L15 10 L20 0' fill='black'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg width='20' height='10' viewBox='0 0 20 10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0 L5 10 L10 0 L15 10 L20 0' fill='black'/%3E%3C/svg%3E");
-  -webkit-mask-repeat: repeat-x;
-  mask-repeat: repeat-x;
 }

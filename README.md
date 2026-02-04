@@ -1,75 +1,112 @@
-# ORVEEOTECH Website
+# Orveeotech Website
 
-A modern, high-performance brand website with a 1990s graphic design inspired retro feel. Built with Next.js (App Router), JavaScript, and CSS Modules.
+A vintage-themed, retro-styled corporate website for Orveeotech, a brand of MD Infotech Systems. Built with Next.js 14, this project features a unique "scrapbook" aesthetic with paper textures, doodles, and coffee stains, while delivering modern performance and responsiveness.
 
-## Features
+## 🌟 Features
 
-- **Retro Aesthetic**: Custom CSS variables for a 90s Memphis/Pop design style.
-- **Animations**: GSAP for hero sequences, Framer Motion for UI interactions, and minimal Three.js for background effects.
-- **Backend**: Next.js API Routes integrated with MongoDB for contact form submissions.
-- **Performance**: Server Components by default, optimized fonts (Outfit).
+- **Unique Retro Design**: Custom CSS modules implementing a vintage scrapbook look.
+- **Responsive Layout**: Fully optimized for Desktop, Tablet, and Mobile devices.
+- **Contact Form**: Integrated with Email notifications (Nodemailer) and MongoDB storage.
+- **Automated Reporting**: Weekly and Monthly Excel reports generated via Cron jobs.
+- **Bot Protection**: Honeypot and simple arithmetic CAPTCHA.
+- **Animations**: Subtle Framer Motion animations for enhanced interactivity.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
-- **Language**: JavaScript
-- **Styling**: CSS Modules, Global CSS Variables
-- **Animations**: GSAP, Framer Motion, Three.js (@react-three/fiber)
-- **Database**: MongoDB (via Mongoose)
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Database**: [MongoDB](https://www.mongodb.com/) (Mongoose)
+- **Styling**: CSS Modules, Google Fonts (Rye, Special Elite, Outfit)
+- **Email**: Nodemailer (Gmail SMTP)
+- **Scheduling**: Vercel Cron
+- **Excel**: XLSX (SheetJS)
 
-## Getting Started
+## 🚀 Getting Started
 
-1. **Clone the repository:**
-   ```bash
-   git clone <repository-url>
-   cd orveeotech_website
-   ```
+### Prerequisites
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+- Node.js 18+
+- MongoDB Atlas Account
+- Gmail Account (with App Password)
 
-3. **Configure Environment Variables:**
-   - Copy `.env.local.example` to `.env.local`
-   - Add your MongoDB connection string:
-     ```
-     MONGODB_URI=your_mongodb_connection_string
-     ```
+### Installation
 
-4. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/orveeotech.git
+    cd orveeotech
+    ```
 
-5. **Open http://localhost:3000** to view the site.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Deployment
+3.  **Set up Environment Variables:**
+    Create a `.env.local` file in the root directory. Use the example below as a guide:
 
-### Vercel (Recommended)
+    ```env
+    # Database Connection
+    MONGODB_URI="mongodb+srv://<username>:<password>@cluster.mongodb.net/visitors?retryWrites=true&w=majority"
 
-1. Push your code to a Git repository (GitHub, GitLab, Bitbucket).
-2. Import the project into Vercel.
-3. Add the `MONGODB_URI` environment variable in the Vercel dashboard.
-4. Deploy.
+    # Email Configuration (for Contact Form)
+    EMAIL_USER="your-email@gmail.com"
+    EMAIL_PASS="your-gmail-app-password"
+    ADMIN_EMAIL="contact@orveeotech.com"
 
-### Render
+    # Security
+    CRON_SECRET="your_secure_random_string_for_cron_jobs"
+    ```
 
-1. Create a new Web Service on Render.
-2. Connect your repository.
-3. Set the build command to `npm run build`.
-4. Set the start command to `npm start`.
-5. Add the `MONGODB_URI` environment variable.
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-## Project Structure
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- `app/`: App Router pages and API routes.
-  - `page.js`: Home page.
-  - `about/`: About page.
-  - `services/`: Services & Works page.
-  - `contact/`: Contact page.
-  - `api/contact/`: Contact form API endpoint.
-  - `globals.css`: Global styles and design tokens.
-- `components/`: Reusable UI components (Navbar, Footer, Hero, etc.).
-- `lib/`: Utility functions (MongoDB connection).
-- `models/`: Mongoose models (Contact schema).
+## 📁 Project Structure
+
+```
+Orveeotech/
+├── app/
+│   ├── api/             # Backend API Routes
+│   │   ├── contact/     # Form submission handler
+│   │   └── cron/        # Scheduled tasks (reports)
+│   ├── contact/         # Contact Page
+│   ├── services/        # Services Page
+│   ├── globals.css      # Global styles & variables
+│   ├── layout.js        # Root layout
+│   └── page.js          # Homepage
+├── components/          # Reusable UI Components
+│   ├── Navbar.js        # Responsive Navigation
+│   ├── Footer.js        # Site Footer
+│   ├── Doodle.js        # Decorative SVG elements
+│   ├── CoffeeStain.js   # Decorative overlays
+│   └── ...
+├── lib/                 # Utility functions
+│   ├── mongodb.js       # DB Connection helper
+│   └── notifications.js # Email sending logic
+├── models/              # Mongoose Schemas
+│   └── Contact.js       # Contact form data model
+└── public/              # Static assets
+```
+
+## ⏰ Cron Jobs (Automated Reports)
+
+The project is configured with `vercel.json` to run automated tasks:
+
+*   **Weekly Report**: Every Sunday at 7:00 AM.
+*   **Monthly Report**: 1st of every month at 7:00 AM.
+
+These jobs hit the `/api/cron/report` endpoint, generating an Excel file of all contact submissions and emailing it to the Admin.
+
+## 📱 Responsiveness
+
+The design adapts to all screen sizes:
+*   **Desktop**: Full layout with floating elements and grid structures.
+*   **Tablet**: Adjusted padding and font sizes.
+*   **Mobile**: Stacked layouts, simplified navigation, and touch-friendly touchpoints.
+
+## 📄 License
+
+This project is proprietary software of MD Infotech Systems.

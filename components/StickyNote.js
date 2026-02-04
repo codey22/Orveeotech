@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import styles from './StickyNote.module.css';
 
-export default function StickyNote({ children, color = 'yellow', rotation = 0, className = '', decoration = 'tape' }) {
+export default function StickyNote({ children, color = 'yellow', rotation = 0, className = '', decoration = 'pin' }) {
   const [delay, setDelay] = useState(0);
 
   useEffect(() => {

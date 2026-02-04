@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  padding: 4rem;
+  padding: 0 4rem; /* Removed vertical padding */
   background-color: transparent; /* Let global background show through */
 }
 
@@ -36,18 +36,9 @@
   max-width: 600px;
 }
 
-.centerPiece::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 150px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+/* Removed centerPiece::before */
+
+/* Reflection for centerPiece pin removed, using .pin instead */
 
 .mainTitle {
   font-size: 4rem;
@@ -82,28 +73,40 @@
 }
 
 /* Scattered Elements Positioning */
+/* IT Solutions (Yellow) */
 .note1 {
   position: absolute;
   top: 10%;
-  left: 5%;
+  left: 8%; /* Increased left spacing */
+  z-index: 5; /* Base layer */
 }
 
+/* Creative Code (Pink) */
 .note2 {
   position: absolute;
   bottom: 15%;
-  left: 10%;
+  left: 12%; /* Increased left spacing */
+  z-index: 5; /* Base layer */
 }
 
+/* Global Reach (Green - formerly polaroid1) */
 .polaroid1 {
   position: absolute;
-  top: 15%;
-  right: 10%;
+  top: 15%; /* Restored to top right */
+  right: 8%; /* Increased right spacing */
+  left: auto; /* Clear left */
+  z-index: 5; /* Base layer */
 }
 
+/* Join Us (Blue) */
 .note3 {
   position: absolute;
-  bottom: 20%;
-  right: 5%;
+  top: 40%; /* Moved down slightly more for better overlap visibility */
+  right: 18%; /* Moved left slightly to overlap Global Reach */
+  bottom: auto; /* Clear bottom */
+  left: auto; /* Clear left */
+  z-index: 10; /* Overlap Global Reach */
+  width: 280px; /* Match Creative Code width */
 }
 
 .actions {
@@ -143,96 +146,156 @@
   transform: rotate(2deg);
 }
 
-.tape {
+.pin {
+  /* Metal Needle Part */
   position: absolute;
-  top: -15px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 25px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(0,0,0,0.1);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(to right, #bdc3c7, #ecf0f1, #bdc3c7);
+  border-radius: 0 0 2px 2px;
+  transform: translateX(-50%) rotate(-15deg);
+  transform-origin: top center;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.pin::before {
+  /* Pin Head */
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: -10px;
+  width: 24px;
+  height: 24px;
+  background: radial-gradient(circle at 30% 30%, #ffcdd2 5%, #e53935 30%, #b71c1c 60%, #5d1010 100%);
+  border-radius: 50%;
+  box-shadow: 
+    3px 5px 8px rgba(0,0,0,0.4),
+    inset -2px -2px 4px rgba(0,0,0,0.2),
+    inset 2px 2px 4px rgba(255,255,255,0.4);
+  z-index: 11;
+}
+
+.pin::after {
+  /* Reflection */
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: -5px;
+  width: 8px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  filter: blur(1px);
+  transform: rotate(-45deg);
+  z-index: 12;
 }
 
 .tapeBottom {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: black;
-  color: #ffeb3b;
-  font-family: var(--font-special-elite), monospace;
-  padding: 0.5rem 0;
+  bottom: 0rem;
+  left: -1%;
+  width: 102%;
+  background: #1a1a1a;
+  border-top: 4px solid #eccc68;
+  border-bottom: 4px solid #eccc68;
+  padding: 0.8rem 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: rotate(-2deg);
   z-index: 100;
-  border-top: 3px solid #ffeb3b;
+  color: #eccc68;
 }
 
-/* Responsive Design */
+/* Tablet & Mobile Optimization */
 @media (max-width: 1024px) {
-  .boardContainer {
-    height: auto;
-    min-height: 80vh;
+  .hero {
+    padding: 0 2rem;
   }
   
   .mainTitle {
     font-size: 3rem;
   }
+  
+  /* Scale down decorative elements */
+  .note1, .note2, .note3, .polaroid1 {
+    transform: scale(0.8);
+  }
+  
+  .note1 { top: 5%; left: 0%; }
+  .note2 { bottom: 10%; left: 0%; }
+  .polaroid1 { top: 10%; right: 0%; }
+  .note3 { top: 35%; right: 5%; }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 8rem 1rem 4rem 1rem; /* More top padding for navbar */
-    align-items: flex-start;
+    padding: 8rem 1rem 8rem 1rem; /* Increased bottom padding for tape */
     height: auto;
-    min-height: 100vh;
-    overflow-y: visible;
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .tapeBottom {
+    bottom: 2rem;
+    transform: rotate(-1deg);
   }
 
   .boardContainer {
-    flex-direction: column;
     height: auto;
-    display: flex;
-    gap: 2rem;
-    padding-bottom: 4rem;
+    flex-direction: column;
+    gap: 3rem;
+    padding-bottom: 6rem; /* Space for actions */
   }
 
   .centerPiece {
-    position: relative;
-    transform: rotate(-1deg);
-    margin-bottom: 1rem;
+    padding: 2rem 1.5rem;
     width: 100%;
-    padding: 2rem 1rem;
-    max-width: 100%;
+    transform: rotate(0deg); /* Reset rotation for cleaner mobile look */
+    margin-bottom: 2rem;
   }
-  
+
   .mainTitle {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
   
   .tagline {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
-  /* Reset absolute positioning for scattered elements on mobile */
+  /* Reset absolute positioning for mobile flow */
   .note1, .note2, .note3, .polaroid1 {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    bottom: auto !important;
-    right: auto !important;
-    margin: 0 auto;
-    /* Keep original rotation from inline styles or let it be */
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: scale(0.9) rotate(var(--rotation, 0deg)); /* Slightly smaller but readable */
+    margin: 1rem 0;
   }
-  
+
+  /* Add some randomness back via rotation variables if possible, or just hardcode */
+  .note1 { transform: rotate(-2deg); }
+  .note2 { transform: rotate(1deg); }
+  .note3 { transform: rotate(-1deg); }
+  .polaroid1 { transform: rotate(2deg); }
+
   .actions {
-     position: relative;
-     bottom: auto;
-     left: auto;
-     transform: none;
-     flex-direction: column;
-     align-items: center;
-     margin-top: 1rem;
-     width: 100%;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+
+  .actionLink {
+    width: 100%;
+    text-align: center;
+    max-width: 300px;
   }
 }

@@ -76,19 +76,20 @@
   border-radius: 2px;
 }
 
-/* Knot to make it look tied through the hole */
+/* Knot to make it look tied through the hole - Top Knot */
 .rope::before {
   content: '';
   position: absolute;
-  top: -6px;
+  top: -8px; /* Adjusted to sit better */
   left: 50%;
   transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
+  width: 14px; /* Larger knot */
+  height: 14px; /* Larger knot */
   background: #5d4037;
   border-radius: 50%;
   z-index: 4;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Stronger shadow */
+  border: 1px solid #3e2723; /* Border for definition */
 }
 
 @keyframes swingRope {
@@ -98,7 +99,7 @@
 
 .tag {
   position: absolute;
-  top: 85px; /* End of the rope */
+  top: 100%; /* Hangs from the bottom of the rope */
   left: 50%;
   transform: translateX(-50%) rotate(-5deg);
   width: 140px;
@@ -112,12 +113,52 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: swingTag 3s ease-in-out infinite alternate;
+  animation: swingTag 2.5s ease-in-out infinite alternate; /* Slightly faster/different timing for compound feel */
   transform-origin: top center;
+  margin-top: -10px; /* Pull it up to overlap the rope end */
+}
+
+/* Knot at the tag connection point */
+.tag::before {
+  content: '';
+  position: absolute;
+  top: -4px; /* Positioned to link rope and tag */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px; /* Wider knot */
+  height: 14px;
+  background: #5d4037;
+  border-radius: 8px; /* Rounded rectangle for a "wrapped" look */
+  border: 2px solid #3e2723;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.5);
+  z-index: 10;
+  /* Texture to simulate wrapped rope */
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(0,0,0,0.2) 4px,
+    rgba(0,0,0,0.2) 6px
+  );
+}
+
+/* Eyelet (Hole) in the tag */
+.tag::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #2a2a2a;
+  border: 2px solid #888; /* Silver ring */
+  border-radius: 50%;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
 
 @keyframes swingTag {
-  0% { transform: translateX(-50%) rotate(-6deg); }
+  0% { transform: translateX(-50%) rotate(-2deg); }
   100% { transform: translateX(-50%) rotate(2deg); }
 }
 
