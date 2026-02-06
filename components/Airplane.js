@@ -6,7 +6,7 @@ export default function Airplane() {
   return (
     <div className="fixed top-[150px] lg:top-[100px] left-0 w-full h-0 z-50 pointer-events-none overflow-visible">
       <motion.div
-        className="absolute flex items-center flex-row-reverse"
+        className="absolute flex items-center flex-row"
         initial={{ x: '-850px' }} // Minimized start distance to reduce re-appearance delay
         animate={{
           x: ['-850px', 'calc(100vw + 50px)'], // Just enough to clear screen edges
@@ -28,8 +28,8 @@ export default function Airplane() {
       >
         <div className="flex flex-row items-center">
           {/* 1. The Banner (Trails behind on the left) */}
-          <div className="relative w-[280px] md:w-[480px] lg:w-[350px] h-[60px] md:h-[100px] lg:h-[80px] z-[1] animate-hoist origin-right">
-            <svg viewBox="0 0 500 100" className="w-full h-full drop-shadow-md overflow-visible">
+          <div className="relative w-[400px] md:w-[600px] lg:w-[500px] h-[80px] md:h-[130px] lg:h-[110px] z-[1] origin-right">
+            <svg viewBox="0 0 600 100" className="w-full h-full drop-shadow-md overflow-visible">
               <defs>
                 <filter id="fabricTexture">
                   <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="2" />
@@ -40,22 +40,22 @@ export default function Airplane() {
               {/* Banner Fabric */}
               <path fill="#fff8e1" stroke="#8d6e63" strokeWidth="1" filter="url(#fabricTexture)">
                 <animate attributeName="d" dur="0.8s" repeatCount="indefinite"
-                  values="M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z; M0,35 Q70,55 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,95 280,75 T140,75 T0,75 Z; M0,35 Q70,15 140,35 T280,35 T420,35 L500,35 L500,75 L420,75 Q350,55 280,75 T140,75 T0,75 Z"
+                  values="M0,35 Q70,15 140,35 T280,35 T420,35 T560,35 L600,35 L600,75 L560,75 Q490,95 420,75 Q350,55 280,75 T140,75 T0,75 Z; M0,35 Q70,55 140,35 T280,35 T420,35 T560,35 L600,35 L600,75 L560,75 Q490,55 420,75 Q350,95 280,75 T140,75 T0,75 Z; M0,35 Q70,15 140,35 T280,35 T420,35 T560,35 L600,35 L600,75 L560,75 Q490,95 420,75 Q350,55 280,75 T140,75 T0,75 Z"
                 />
               </path>
               {/* Grommet (The Hole) on the Right Side */}
-              <circle cx="492" cy="55" r="4" fill="#a1887f" stroke="#5d4037" strokeWidth="1" />
-              <circle cx="492" cy="55" r="2" fill="#3e2723" />
+              <circle cx="592" cy="55" r="4" fill="#a1887f" stroke="#5d4037" strokeWidth="1" />
+              <circle cx="592" cy="55" r="2" fill="#3e2723" />
               {/* Text */}
-              <path id="textCurve" fill="none"><animate attributeName="d" dur="0.8s" repeatCount="indefinite" values="M10,60 Q80,40 150,60 T290,60 T430,60 L500,60; M10,60 Q80,80 150,60 T290,60 T430,60 L500,60; M10,60 Q80,40 150,60 T290,60 T430,60 L500,60" /></path>
-              <text fill="#b71c1c" fontSize="16" fontWeight="900" fontFamily="var(--font-rye), serif">
+              <path id="textCurve" fill="none"><animate attributeName="d" dur="0.8s" repeatCount="indefinite" values="M10,60 Q80,40 150,60 T290,60 T430,60 T570,60 L600,60; M10,60 Q80,80 150,60 T290,60 T430,60 T570,60 L600,60; M10,60 Q80,40 150,60 T290,60 T430,60 T570,60 L600,60" /></path>
+              <text fill="#b71c1c" fontSize="24" fontWeight="900" fontFamily="var(--font-rye), serif">
                 <textPath href="#textCurve" startOffset="10">TAKING YOUR BUSINESS TO NEW HEIGHTS!</textPath>
               </text>
             </svg>
           </div>
 
           {/* 2. The Rope (Connecting Banner Right to Plane Left) */}
-          <div className="relative w-[30px] md:w-[50px] h-[60px] md:h-[100px] z-[2] ml-[-3px] md:ml-[-5px] mr-[-20px] md:mr-[-35px]">
+          <div className="relative w-[30px] md:w-[50px] h-[80px] md:h-[130px] lg:h-[110px] z-[2] ml-[-6px] md:ml-[-8px] lg:ml-[-7px] mr-[-20px] md:mr-[-35px]">
             <svg viewBox="0 0 50 100" className="w-full h-full overflow-visible">
               <path d="M0,55 Q25,58 50,55" fill="none" stroke="#5d4037" strokeWidth="2.5" strokeLinecap="round">
                 <animate attributeName="d" dur="0.8s" repeatCount="indefinite"
@@ -70,7 +70,7 @@ export default function Airplane() {
           </div>
 
           {/* 3. The Plane (Pulling to the Right) */}
-          <div className="relative w-[100px] md:w-[180px] lg:w-[140px] h-[60px] md:h-[100px] lg:h-[80px] z-[10] mt-[-3px] md:mt-[-5px]">
+          <div className="relative w-[120px] md:w-[210px] lg:w-[160px] h-[72px] md:h-[120px] lg:h-[95px] z-[10] mt-[-3px] md:mt-[-5px]">
             <svg viewBox="-20 -20 260 140" className="w-full h-full [filter:drop-shadow(5px_10px_5px_rgba(0,0,0,0.3))] overflow-visible">
               <defs>
                 <linearGradient id="fuselageGradient" x1="0%" y1="0%" x2="0%" y2="100%">
