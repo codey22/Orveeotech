@@ -27,7 +27,7 @@ export default async function ServiceDetail({ params }) {
       <div className="container pt-48 max-w-[850px] relative mx-auto px-4">
         <div className="mb-4 text-right">
           <Link href="/services" className="inline-flex items-center gap-2 font-mono font-bold no-underline text-[#3e2723] text-[1.1rem] transition-transform hover:-translate-x-[5px] hover:underline">
-            Back to Services <span className="text-[1.2rem]">→</span>
+            <span className="text-[1.2rem]">←</span> Back to Services
           </Link>
         </div>
 
