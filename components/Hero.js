@@ -23,7 +23,7 @@ export default function Hero() {
           <div className="absolute top-0 left-1/2 w-1 h-3 bg-gradient-to-r from-[#bdc3c7] via-[#ecf0f1] to-[#bdc3c7] rounded-b-sm -translate-x-1/2 -rotate-15 origin-top shadow-[1px_1px_2px_rgba(0,0,0,0.2)] z-10 before:content-[''] before:absolute before:top-[-18px] before:left-[-10px] before:w-6 before:h-6 before:bg-[radial-gradient(circle_at_30%_30%,#ffcdd2_5%,#e53935_30%,#b71c1c_60%,#5d1010_100%)] before:rounded-full before:shadow-[3px_5px_8px_rgba(0,0,0,0.4),inset_-2px_-2px_4px_rgba(0,0,0,0.2),inset_2px_2px_4px_rgba(255,255,255,0.4)] before:z-[11] after:content-[''] after:absolute after:top-[-14px] after:left-[-5px] after:w-2 after:h-[6px] after:rounded-full after:bg-[rgba(255,255,255,0.4)] after:blur-[1px] after:-rotate-45 after:z-[12]"></div>
           <h1 className="text-[4.5rem] font-normal m-0 text-black leading-[0.9] tracking-0 font-retro max-md:text-[2.5rem]">
             ORVEEOTECH
-            <span className="block text-base font-mono mt-2 tracking-[2px] bg-[#ffeb3b] text-black px-2 py-0.5 w-fit mx-auto font-bold">EST. 2026</span>
+            <span className="block text-base font-mono mt-2 tracking-[2px] bg-[#ffeb3b] text-black px-2 py-0.5 w-fit mx-auto font-bold">IDEAS → IMPACT</span>
           </h1>
           <Doodle type="underline" color="#d32f2f" style={{ position: 'absolute', bottom: '15%', left: '10%', width: '80%', opacity: 0.7 }} />
           <p className="font-mono text-[1.5rem] mt-6 text-[#333] max-md:text-[1.2rem]">We build business experiences that stick.</p>
@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-0 left-[-1%] w-[102%] bg-[#1a1a1a] border-y-4 border-[#eccc68] py-[0.8rem] shadow-[0_5px_15px_rgba(0,0,0,0.3)] -rotate-2 z-[100] text-[#eccc68] max-md:bottom-8 max-md:-rotate-1">
-        <Marquee text="We Provide Web/App Based IT solutions to make your business grow • • We Also Provide Real-Time Cilent Project Simulation Training For Aspiring Developers • • " />
+        <Marquee text="We Provide Web & App Based IT solutions to make your business grow • • We Also Provide Real-Time Cilent Project Simulation Training For Aspiring Developers • • " />
       </div>
     </section>
   );

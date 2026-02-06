@@ -26,7 +26,7 @@ export default function About() {
           <p>
             It started with a simple idea: <strong>Code should mean something.</strong>
             <br /><br />
-            Founded in 2026, ORVEEOTECH began as a rebellion against "good enough" software. We saw an industry flooded with quick fixes and bloated codebases. We wanted to build things that last. Things that work. Things that have soul.
+            ORVEEOTECH began as a rebellion against "good enough" software. We saw an industry flooded with quick fixes and bloated codebases. We wanted to build things that last. Things that work. Things that have soul.
             <br /><br />
             From a small team of passionate developers, we've grown into a full-fledged technology partner, but our core philosophy remains unchanged: We treat every line of code as a craft.
           </p>
