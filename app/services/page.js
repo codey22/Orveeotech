@@ -1,78 +1,68 @@
-import ProjectCard from '@/components/ProjectCard';
-import styles from './page.module.css';
-import { servicesData } from '@/lib/servicesData';
 import Link from 'next/link';
+import ProjectCard from '@/components/ProjectCard';
 import StickyNote from '@/components/StickyNote';
 import Doodle from '@/components/Doodle';
 import CoffeeStain from '@/components/CoffeeStain';
+import { servicesData } from '@/lib/servicesData';
+
+export const metadata = {
+  title: 'Services & Projects | ORVEEOTECH',
+  description: 'Explore our wide range of IT solutions and our portfolio of innovative projects.',
+};
 
 const projects = [
   {
     id: 1,
-    title: "Note Space",
-    description: "A modern note-taking application designed for efficiency and clarity.",
-    link: "https://note-space-kappa.vercel.app"
+    title: "NoteSpace",
+    description: "A modern, intuitive note-taking application designed for productivity and seamless collaboration.",
+    link: "https://note-space-kappa.vercel.app",
   },
   {
     id: 2,
-    title: "Pharmacy Inventory System",
-    description: "Comprehensive billing and inventory management for pharmacies.",
-    link: "https://pharmacy-inventory-billing-system.onrender.com"
+    title: "Pharmacy Inventory & Billing System",
+    description: "A comprehensive solution for managing pharmaceutical stock, tracking inventory, and streamlining the billing process.",
+    link: "https://pharmacy-inventory-billing-system.onrender.com",
   },
   {
     id: 3,
-    title: "Restaurant Management",
-    description: "Full-stack solution for restaurant operations and order management.",
-    link: "https://resturant-management-system-ow1n.onrender.com"
+    title: "Desi Dahi Website",
+    description: "An elegant and user-friendly digital storefront for a premium dairy brand, focusing on high-quality presentation and smooth user experience.",
+    link: "https://desi-dahi-website-updated.vercel.app/",
   },
   {
     id: 4,
-    title: "Desi Dahi Website",
-    description: "A modern website showcasing authentic dairy products with a cultural touch.",
-    link: "https://desi-dahi-website-updated.vercel.app/"
-  }
+    title: "Restaurant Management System",
+    description: "An all-in-one platform for restaurant operations, covering everything from table bookings to order management and analytics.",
+    link: "https://resturant-management-system-ow1n.onrender.com",
+  },
 ];
-
-export const metadata = {
-  title: 'Services | ORVEEOTECH',
-  description: 'Explore our IT services and view our latest projects.',
-};
 
 export default function Services() {
   return (
     <main>
-      <div className={`container ${styles.pageContainer}`}>
-        
-        {/* Services Section */}
-        <section className={styles.section}>
-          <CoffeeStain style={{ top: '-50px', left: '-50px', opacity: 0.4, transform: 'rotate(45deg)' }} />
-          
-          <h1 className={styles.sectionTitle}>
-            Our Services
-            <Doodle type="scribble" color="#e11d48" style={{ position: 'absolute', top: '-25px', right: '-25px', width: '60px', opacity: 0.6 }} />
-          </h1>
-          
-          <p className={styles.sectionSubtitle}>
-            We offer a wide range of digital services to help your business grow. 
-            <br />
-            <strong>Pick a card below to explore.</strong>
+      <div className="pt-48 px-8 flex flex-col items-center min-h-screen max-md:pt-32 max-md:px-4 max-md:pb-16 mx-auto">
+        <header className="mb-20 text-center relative z-[2] w-full max-w-[800px] mx-auto">
+          <h1 className="font-retro text-[4rem] text-black mb-6 bg-white inline-block px-12 py-4 border-[3px] border-black rotate-1 shadow-[8px_8px_0_rgba(0,0,0,0.2)] font-normal max-md:text-[2.5rem] max-md:px-6 max-md:py-3">Our Expertise</h1>
+          <p className="text-[1.5rem] max-w-[600px] mt-8 mx-auto text-black font-semibold bg-[#bfdbfe] p-6 -rotate-1 shadow-[4px_4px_0_rgba(0,0,0,0.1)] font-main border-2 border-black max-md:text-[1.1rem] max-md:p-4">
+            We offer bespoke digital solutions tailored to your unique requirements.
+            Our team blends creativity with technical excellence.
           </p>
-          
-          <div className={styles.servicesGrid}>
+          <Doodle type="scribble" color="#059669" style={{ position: 'absolute', top: '-10px', left: '-20px', width: '100px', transform: 'rotate(-45deg)', opacity: 0.6 }} />
+        </header>
+
+        {/* Services Section */}
+        <section className="mb-32 w-full max-w-[1200px] flex flex-col items-center">
+          <h2 className="font-retro text-[3.5rem] mb-14 text-center text-text uppercase bg-white px-8 py-4 border-[3px] border-black -rotate-1 shadow-[6px_6px_0_rgba(0,0,0,0.2)] inline-block max-md:text-[2.5rem] relative">
+            What We Offer
+            <Doodle type="circle" color="#e11d48" style={{ position: 'absolute', top: '-15px', right: '-25px', width: '80px', opacity: 0.5 }} />
+          </h2>
+          <div className="flex flex-wrap justify-center gap-16 p-8 w-full max-md:p-4 max-md:gap-8">
             {servicesData.map((service, index) => (
-              <Link 
-                href={`/services/${service.slug}`} 
-                key={index} 
-                className={styles.serviceLink}
-              >
-                <StickyNote 
-                  color={service.color} 
-                  rotation={index % 2 === 0 ? -2 : 2}
-                  decoration="pin"
-                >
-                  <h3>{service.title}</h3>
-                  <p>{service.shortDesc}</p>
-                  <div style={{ marginTop: '1.5rem', fontFamily: 'var(--font-special-elite)', fontSize: '0.9rem', fontWeight: 'bold', borderBottom: '2px solid black', paddingBottom: '2px', display: 'inline-block' }}>
+              <Link key={index} href={`/services/${service.slug}`} className="no-underline color-inherit block transition-transform duration-300 hover:scale-[1.02] hover:z-10">
+                <StickyNote color={service.color} rotation={index % 2 === 0 ? -2 : 2} decoration="pin">
+                  <h3 className="font-retro text-xl mb-4 uppercase text-[#b91c1c] border-b-2 border-[#b91c1c] inline-block">{service.title}</h3>
+                  <p className="font-mono text-base leading-relaxed mb-6">{service.shortDesc}</p>
+                  <div className="mt-auto font-retro text-[0.9rem] font-bold border-b-2 border-black pb-0.5 inline-block">
                     View Details &rarr;
                   </div>
                 </StickyNote>
@@ -81,50 +71,26 @@ export default function Services() {
           </div>
         </section>
 
-        {/* Coming Soon Section */}
-        <section className={styles.comingSoonSection}>
-           <h2 className={styles.sectionTitle} style={{ fontSize: '2.5rem', transform: 'rotate(1deg)' }}>Future Expansion</h2>
-           <p className={styles.sectionSubtitle} style={{ maxWidth: '600px', transform: 'rotate(-1deg)' }}>
-             We are constantly evolving. Here is what's currently on our drafting board.
-           </p>
-           
-           <div className={styles.comingSoonGrid}>
-             <div className={styles.comingSoonCard}>
-               <div className={styles.comingSoonBadge}>Coming Soon</div>
-               <h3>Cloud Engineering</h3>
-               <p>Scalable cloud infrastructure, DevOps pipelines, and serverless architectures designed for the enterprise.</p>
-               <Doodle type="circle" color="#999" style={{ position: 'absolute', bottom: '10px', right: '10px', width: '40px', opacity: 0.3 }} />
-             </div>
-             
-             <div className={styles.comingSoonCard}>
-               <div className={styles.comingSoonBadge}>Coming Soon</div>
-               <h3>Digital Marketing</h3>
-               <p>Data-driven SEO, content strategy, and brand growth campaigns to put your business on the map.</p>
-               <Doodle type="arrow" color="#999" style={{ position: 'absolute', top: '10px', left: '10px', width: '30px', transform: 'rotate(180deg)', opacity: 0.3 }} />
-             </div>
-           </div>
-           <CoffeeStain style={{ bottom: '20px', right: '10%', opacity: 0.2 }} />
-        </section>
-
-        <div className={styles.separator}></div>
-
-        {/* Works Section */}
-        <section className={styles.section}>
-          <h1 className={styles.sectionTitle} style={{ transform: 'rotate(2deg)' }}>
-             Our Works
-             <Doodle type="underline" color="#059669" style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', opacity: 0.5 }} />
-          </h1>
-          <p className={styles.sectionSubtitle}>
-            Check out some of our recent live projects. We take pride in delivering 
+        {/* Projects Section */}
+        <section className="mb-32 w-full max-w-[1200px] flex flex-col items-center">
+          <CoffeeStain style={{ top: '-40px', left: '10%', opacity: 0.4 }} />
+          <h2 className="font-retro text-[3.5rem] mb-14 text-center text-text uppercase bg-white px-8 py-4 border-[3px] border-black -rotate-1 shadow-[6px_6px_0_rgba(0,0,0,0.2)] inline-block max-md:text-[2.5rem] relative" style={{ transform: 'rotate(2deg)' }}>
+            Recent Work
+            <Doodle type="underline" color="#059669" style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', opacity: 0.5 }} />
+          </h2>
+          <p className="mb-16 text-[1.2rem] color-text font-medium max-w-[700px] text-center font-mono bg-white border border-[#ccc] p-6 shadow-[4px_4px_0_rgba(0,0,0,0.05)] rotate-1 max-md:text-[1rem] max-md:p-4">
+            Check out some of our recent live projects. We take pride in delivering
             high-quality, functional, and beautiful software.
           </p>
-          <div className={styles.projectsGrid}>
-            {projects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
+          <div className="grid grid-cols-2 gap-16 w-full p-8 max-md:grid-cols-1 max-md:p-4 max-md:gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
           <CoffeeStain style={{ top: '50%', right: '-40px', opacity: 0.3 }} />
         </section>
+
+        <div className="w-[80%] h-[2px] bg-[repeating-linear-gradient(to_right,#333_0,#333_10px,transparent_10px,transparent_20px)] my-24 mx-auto opacity-30"></div>
 
       </div>
     </main>

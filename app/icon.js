@@ -18,10 +18,10 @@ export default async function Icon() {
       new URL('https://fonts.gstatic.com/s/rye/v15/XjO6bO3F-uP2-qU.ttf', import.meta.url)
     );
     if (response.ok) {
-        fontData = await response.arrayBuffer();
+      fontData = await response.arrayBuffer();
     }
   } catch (e) {
-    console.log('Failed to load font', e);
+    // Fallback to Courier New if font fails
   }
 
   return new ImageResponse(
@@ -52,13 +52,13 @@ export default async function Icon() {
       ...size,
       fonts: fontData
         ? [
-            {
-              name: 'Rye',
-              data: fontData,
-              style: 'normal',
-              weight: 400,
-            },
-          ]
+          {
+            name: 'Rye',
+            data: fontData,
+            style: 'normal',
+            weight: 400,
+          },
+        ]
         : undefined,
     }
   );
