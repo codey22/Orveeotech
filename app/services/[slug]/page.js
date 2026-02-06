@@ -25,9 +25,9 @@ export default async function ServiceDetail({ params }) {
   return (
     <main className="min-h-screen bg-[#f0e6d2] [background-image:linear-gradient(90deg,transparent_95%,rgba(0,0,0,0.05)_95%),linear-gradient(transparent_95%,rgba(0,0,0,0.05)_95%)] [background-size:40px_40px] pb-24">
       <div className="container pt-48 max-w-[850px] relative mx-auto px-4">
-        <div className="mb-4">
+        <div className="mb-4 text-right">
           <Link href="/services" className="inline-flex items-center gap-2 font-mono font-bold no-underline text-[#3e2723] text-[1.1rem] transition-transform hover:-translate-x-[5px] hover:underline">
-            <span className="text-[1.2rem]">←</span> Back to Services
+            Back to Services <span className="text-[1.2rem]">→</span>
           </Link>
         </div>
 
