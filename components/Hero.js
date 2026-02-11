@@ -68,7 +68,7 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-0 left-[-1%] w-[102%] bg-[#1a1a1a] border-y-4 border-[#eccc68] py-[0.8rem] shadow-[0_5px_15px_rgba(0,0,0,0.3)] -rotate-2 z-[100] text-[#eccc68] max-md:bottom-8 max-md:-rotate-1">
-        <Marquee text="We Provide Web & App Based IT solutions to make your business grow • • We Also Provide Industry Grade Simulation Project Training Programe & Paid Internship To Aspiring Future Developers • • " />
+        <Marquee text="We Provide Web & App Based IT solutions to make your business grow • • We Also Provide Beginner Friendly Project Based Training Programe & Paid Internship On Industry Grade Simulation Projects To Aspiring Future Developers • • " />
       </div>
     </section>
   );

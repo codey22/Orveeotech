@@ -1,7 +1,3 @@
-'use client';
-
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Hero from '@/components/Hero';
 import StickyNote from '@/components/StickyNote';
 import Doodle from '@/components/Doodle';
@@ -28,18 +24,6 @@ const reviews = [
 
 
 export default function Home() {
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentReviewIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const currentReview = reviews[currentReviewIndex];
-
   return (
     <main>
       <div className="flex flex-col items-center w-full">
@@ -116,30 +100,21 @@ export default function Home() {
         <section className="w-full py-24 px-8 flex flex-col items-center relative max-md:py-16 max-md:px-4 bg-[#f9f9f9] [background-image:linear-gradient(#e8e8e8_1px,transparent_1px),linear-gradient(90deg,#e8e8e8_1px,transparent_1px)] [background-size:30px_30px]">
           <h2 className="font-retro text-[3.5rem] mb-14 text-center text-text uppercase bg-white px-8 py-4 border-thick -rotate-1 shadow-[6px_6px_0_rgba(0,0,0,0.2)] max-md:text-[2rem] max-md:px-6 max-md:py-3 max-md:mb-10 relative" style={{ transform: 'rotate(-2deg)' }}>What People Say</h2>
 
-          <div className="relative w-full max-w-[600px] min-h-[400px] flex justify-center items-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentReview.id}
-                initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
-                animate={{ opacity: 1, scale: 1, rotate: currentReview.rotation }}
-                exit={{ opacity: 0, scale: 0.9, rotate: 5 }}
-                transition={{ duration: 0.5 }}
-                className="absolute"
-              >
-                <StickyNote color={currentReview.color} rotation={0} className="!max-w-[500px] !w-full !px-8 !py-12">
-                  <h3 className="text-[1.2rem] font-bold mb-4 font-retro text-[#333] tracking-[1px] border-b-2 border-dashed border-[#555] pb-2 inline-block">
-                    💬 Review {currentReview.id}
-                  </h3>
-                  <p className="text-[1rem] leading-[1.6] italic mb-6">
-                    {currentReview.text}
-                  </p>
-                  <div className="text-right font-mono text-[0.9rem] font-bold text-[#444] mt-4">
-                    {currentReview.author} <br />
-                    <span className="text-[0.8rem] font-normal text-[#666]">~ {currentReview.designation}</span>
-                  </div>
-                </StickyNote>
-              </motion.div>
-            </AnimatePresence>
+          <div className="flex flex-wrap justify-center gap-14 max-w-[1200px] w-full max-md:gap-8">
+            {reviews.map((review) => (
+              <StickyNote key={review.id} color={review.color} rotation={review.rotation}>
+                <h3 className="text-[1.2rem] font-bold mb-4 font-retro text-[#333] tracking-[1px] border-b-2 border-dashed border-[#555] pb-2 inline-block">
+                  💬 Review {review.id}
+                </h3>
+                <p className="text-[1rem] leading-[1.6] italic mb-6">
+                  {review.text}
+                </p>
+                <div className="text-right font-mono text-[0.9rem] font-bold text-[#444] mt-4">
+                  {review.author} <br />
+                  <span className="text-[0.8rem] font-normal text-[#666]">~ {review.designation}</span>
+                </div>
+              </StickyNote>
+            ))}
           </div>
 
           <CoffeeStain style={{ bottom: '10%', right: '10%', opacity: 0.3, transform: 'scale(1.2)' }} />
