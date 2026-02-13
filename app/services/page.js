@@ -90,7 +90,6 @@ export default function Services() {
           <CoffeeStain style={{ top: '50%', right: '-40px', opacity: 0.3 }} />
         </section>
 
-        <div className="w-[80%] h-[2px] bg-[repeating-linear-gradient(to_right,#333_0,#333_10px,transparent_10px,transparent_20px)] my-24 mx-auto opacity-30"></div>
 
       </div>
     </main>

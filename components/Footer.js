@@ -24,10 +24,13 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <div className="border-2 border-[rgba(236,204,104,0.3)] p-[1.25rem] rounded-[4px] relative bg-[rgba(0,0,0,0.2)] rotate-1 transition-transform duration-300 ease-[ease] hover:rotate-0 hover:scale-[1.02] hover:border-[rgba(236,204,104,0.6)] before:content-[''] before:absolute before:[-inset-5px] before:border before:border-dashed before:border-[rgba(255,255,255,0.1)] before:pointer-events-none">
                 <h4 className="text-[#eccc68] mb-4 text-[1.4rem] uppercase tracking-[2px] font-retro [text-shadow:2px_2px_0px_rgba(0,0,0,0.5)] border-b-2 border-dashed border-[#444] pb-2 inline-block">Get in Touch</h4>
-                <p className="mb-2 text-base opacity-90 text-[#ccc]">Email: <a href="mailto:contact@orveeotech.com" className="text-white no-underline border-b border-[#666] pb-[2px] transition-all duration-300 ease-[ease] inline-block hover:text-[#ff4757] hover:border-b-[#ff4757] hover:bg-[rgba(255,71,87,0.1)] hover:scale-[1.05]">contact@orveeotech.com</a></p>
+                <p className="mb-2 text-base opacity-90 text-[#ccc]"><span className="text-[#eccc68]">Email:</span> <a href="mailto:contact@orveeotech.com" className="text-white no-underline border-b border-[#666] pb-[2px] transition-all duration-300 ease-[ease] inline-block hover:text-[#ff4757] hover:border-b-[#ff4757] hover:bg-[rgba(255,71,87,0.1)] hover:scale-[1.05]">contact@orveeotech.com</a></p>
+                <p className="mb-4 text-sm opacity-90 text-[#ccc] leading-[1.6] max-w-[350px]">
+                  <span className="text-[#eccc68]">Address:</span> Bidisha Apartment, 17/B/A Priyonath Ghosh Street, Belgharia, Kolkata - 700056, West Bengal
+                </p>
 
                 <div style={{ marginTop: '1.5rem', position: 'relative' }}>
-                  <p style={{ marginBottom: '0.5rem', opacity: 0.9, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px' }}>Call Us:</p>
+                  <p style={{ marginBottom: '0.5rem', opacity: 0.9, textTransform: 'uppercase', fontSize: '0.8rem', letterSpacing: '2px' }}><span className="text-[#eccc68]">Call Us:</span></p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                     <li style={{ marginBottom: '8px' }}>
                       <a href="tel:7890006416" className="text-[1.2rem] font-bold tracking-[1px] text-[#e5e5e5] no-underline transition-all duration-300 inline-block hover:text-[#ff4757] hover:scale-[1.05]">+91 78900 06416</a>
