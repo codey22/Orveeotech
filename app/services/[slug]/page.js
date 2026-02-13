@@ -64,6 +64,7 @@ export default async function ServiceDetail({ params }) {
             dangerouslySetInnerHTML={{ __html: service.fullDesc }}
           />
 
+
           <div className="bg-[#f3f4f6] p-8 mx-12 mb-12 border border-dashed border-[#9ca3af] relative text-center -rotate-1 max-md:mx-6">
             <Doodle type="scribble" color="#000" style={{ position: 'absolute', bottom: '0', right: '0', width: '100px', opacity: 0.1 }} />
             <p className="font-retro text-[1.2rem] mb-4">Interested in this service?</p>

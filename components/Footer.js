@@ -26,7 +26,7 @@ export default function Footer() {
                 <h4 className="text-[#eccc68] mb-4 text-[1.4rem] uppercase tracking-[2px] font-retro [text-shadow:2px_2px_0px_rgba(0,0,0,0.5)] border-b-2 border-dashed border-[#444] pb-2 inline-block">Get in Touch</h4>
                 <p className="mb-2 text-base opacity-90 text-[#ccc]"><span className="text-[#eccc68]">Email:</span> <a href="mailto:contact@orveeotech.com" className="text-white no-underline border-b border-[#666] pb-[2px] transition-all duration-300 ease-[ease] inline-block hover:text-[#ff4757] hover:border-b-[#ff4757] hover:bg-[rgba(255,71,87,0.1)] hover:scale-[1.05]">contact@orveeotech.com</a></p>
                 <p className="mb-4 text-sm opacity-90 text-[#ccc] leading-[1.6] max-w-[350px]">
-                  <span className="text-[#eccc68]">Address:</span> Bidisha Apartment, 17/B/A Priyonath Ghosh Street, Belgharia, Kolkata - 700056, West Bengal
+                  <span className="text-[#eccc68]">Address:</span> 17/B/A Priyonath Ghosh Street, Belgharia, Kolkata - 700056, West Bengal
                 </p>
 
                 <div style={{ marginTop: '1.5rem', position: 'relative' }}>

@@ -115,9 +115,9 @@ export default function About() {
           <StickyNote color="white" rotation={0} className="!w-full !max-w-[800px]">
             <h3>Future Pipeline</h3>
             <p>
-              While we currently focus on intermediate developers, we are also actively planning comprehensive beginner training modules and a dedicated <strong>Placement Assistance</strong> program which is currently under process.
-              <br /><br />
-              We are expanding our horizons to include AI-driven development tools and cloud-native architecture workshops, all designed to offer maximum value in the near future.
+              
+            
+              We are expanding our horizons to include AI-driven development tools and cloud-native architecture workshops, all designed to offer maximum value in the future.
             </p>
             <Doodle type="underline" color="#333" style={{ position: 'absolute', bottom: '20px', left: '20px', width: '100px', opacity: 0.5 }} />
           </StickyNote>
