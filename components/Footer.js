@@ -64,6 +64,9 @@ export default function Footer() {
                 <a href="#" aria-label="LinkedIn" className="text-[#1a1a1a] bg-[#eccc68] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] inline-flex items-center justify-center no-underline p-0 w-[45px] h-[45px] rounded-full border-2 border-[#1a1a1a] shadow-[3px_3px_0px_rgba(0,0,0,0.5)] hover:-translate-y-[5px] hover:rotate-10 hover:bg-[#ff4757] hover:text-white hover:shadow-[5px_5px_0px_rgba(0,0,0,0.5)]">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
+                <a href="https://x.com/orveeotech" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" className="text-[#1a1a1a] bg-[#eccc68] transition-all duration-300 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] inline-flex items-center justify-center no-underline p-0 w-[45px] h-[45px] rounded-full border-2 border-[#1a1a1a] shadow-[3px_3px_0px_rgba(0,0,0,0.5)] hover:-translate-y-[5px] hover:rotate-10 hover:bg-[#ff4757] hover:text-white hover:shadow-[5px_5px_0px_rgba(0,0,0,0.5)]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /></svg>
+                </a>
               </div>
             </div>
           </div>
