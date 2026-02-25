@@ -13,27 +13,21 @@ export const metadata = {
 const projects = [
   {
     id: 1,
-    title: "NoteSpace",
+    title: "Notetaker",
     description: "A modern, intuitive note-taking application designed for productivity and seamless collaboration.",
-    link: "https://note-space-kappa.vercel.app",
+    link: "about:blank",
   },
   {
     id: 2,
-    title: "Pharmacy Inventory & Billing System",
+    title: "Pharmacy Management",
     description: "A comprehensive solution for managing pharmaceutical stock, tracking inventory, and streamlining the billing process.",
-    link: "https://pharmacy-inventory-billing-system.onrender.com",
-  },
-  {
-    id: 3,
-    title: "Desi Dahi Website",
-    description: "An elegant and user-friendly digital storefront for a premium dairy brand, focusing on high-quality presentation and smooth user experience.",
-    link: "https://desi-dahi-website-updated.vercel.app/",
+    link: "about:blank",
   },
   {
     id: 4,
     title: "Restaurant Management System",
     description: "An all-in-one platform for restaurant operations, covering everything from table bookings to order management and analytics.",
-    link: "https://resturant-management-system-ow1n.onrender.com",
+    link: "about:blank",
   },
 ];
 
